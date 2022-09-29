@@ -51,7 +51,7 @@ const PriceSignup = () => {
       <Box
         m="auto"
         border={"1px solid white"}
-        w={{ lg: "70%",base:"92%" }}
+        w={{ lg: "80%",base:"92%" }}
         mt={{ lg: "0px" }}
         p={{ lg: "20px",base:"20px" }}
        
