@@ -120,7 +120,7 @@ import {
     return (
   
   <>
-  <Box h="30px" backgroundColor={"pink.400"} px="4%">
+  {/* <Box h="30px" backgroundColor={"pink.400"} px={"2%","4%"}>
     <HStack pt="4px" fontSize="14px">
       <Spacer/>
       <Text>Back to Toggl Glogal</Text>
@@ -129,7 +129,7 @@ import {
       <Text>Our Mission</Text>
       <Text>Working at Toggl</Text>
     </HStack>
-  </Box>
+  </Box> */}
   {/* <Navbar/> */}
   <Box w={"full"} >
     <Box backgroundImage="linear-gradient(rgba(0, 0, 0, 0.5),
