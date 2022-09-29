@@ -11,6 +11,7 @@ app.use(express.json());
 require("dotenv").config();
 const passport = require("./config/googleouth");
 const ProjectRouter = require("./routes/project.route");
+const TimerRouter = require("./routes/timer");
 
 //google auth
 app.get(
@@ -90,6 +91,7 @@ const authenticated = (req, res, next) => {
 };
 ////////////////////////////////////////
 app.use(authenticated);
+app.use("/timer",TimerRouter)
 app.use("/project", ProjectRouter);
 app.use("/tags", tagsRouter);
 app.use("/client", clientRouter);
