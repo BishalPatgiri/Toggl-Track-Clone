@@ -5,12 +5,10 @@ import Login from "./Components/Signing/Login"
 
 import './App.css';
 
-
 function App() {
   return (
     <div className="App">
      <Login/>
-
     
     </div>
   );
