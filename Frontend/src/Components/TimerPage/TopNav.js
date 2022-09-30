@@ -57,13 +57,13 @@ const TopNav = () => {
     let project=true
   let [timer ,setTimer ]= useState(false)
   return (
-    <Box>
+    <Box >
       <Flex
         
         position="sticky"
         h="90px"
-        ml="15%"
         
+      width={"100%"}
         mr="10px"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;"
         p="10px 8px 10px 20px"

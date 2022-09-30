@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
-import style from './client.module.css';
-import axios from "axios"
+import style from './tag.module.css';
+import axios from "axios"; 
 import { useDisclosure } from '@chakra-ui/react'
 import {
     Modal,
@@ -31,15 +31,17 @@ import {
   import { AiFillDelete } from 'react-icons/ai';
 
 
-const Client = () => {
+const Tag = () => {
   const token=localStorage.getItem("token")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
 
-  const [client,setClient] = useState("");
+  const [tag,settag] = useState("");
 
   const[data,setData]= useState([])
+
+  
    
 // if("please login again"==="please login again")
 // {
@@ -48,36 +50,27 @@ const Client = () => {
 // else{
 //   setLogin(true)
 // }
+const getdata=()=>{
+  axios.get("http://localhost:8080/tag").then((res) => setData(res.data));
+}
 
   const handleSubmit = () => {
-    const payload = {
-      id:Date.now(),
-      title:client
-    }
-    axios.post(`https://damp-reef-46945.herokuapp.com/tasks/`,payload,{headers:{
-      "authorization":token
-    }})
-    .then((res)=>console.log("client created"))
+    const payload = {"tag":`${tag}`}
+    console.log(payload)
+    
+    axios.post(`http://localhost:8080/tag/create`,payload)
+    .then((res)=>console.log("tag created"))
 
   }
-  const getdata = () => {
-    axios.get("https://damp-reef-46945.herokuapp.com/tasks/all",{
-     headers:{
-       "authorization":token
-     }
-    }).then((res) => setData(res.data));
-   
-  };
   
   useEffect(()=>{
-    getdata()
+    getdata();
   },[handleSubmit])
+
   const deletedata=(id)=>{
+    console.log(id)
     axios
-    .delete(`https://damp-reef-46945.herokuapp.com/tasks/delete/${id}`,{
-      headers:{
-        "authorization":token
-      }})
+    .delete(`http://localhost:8080/tag/${id}`)
     .then((res) => console.log("delete done"));
   }
   
@@ -89,10 +82,10 @@ const Client = () => {
 
         <div className={style.first}>
             <div>
-            Clients
-            <input type="text" placeholder='Find Client...' />
+            tags
+            <input type="text" placeholder='Find tag...' />
             </div>
-            <button className={style.btn} onClick={onOpen} >+ New Client</button>
+            <button className={style.btn} onClick={onOpen} >+ New tag</button>
 
         </div>
         <Modal
@@ -103,11 +96,11 @@ const Client = () => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>New Client</ModalHeader>
+          <ModalHeader>New tag</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <Input ref={initialRef} placeholder='Client name' value={client} onChange={(e) => {setClient(e.target.value)}} />
+              <Input ref={initialRef} placeholder='tag name' value={tag} onChange={(e) => {settag(e.target.value)}} />
             </FormControl>
 
         
@@ -126,7 +119,7 @@ const Client = () => {
             All
         </div>
 
-        <div className={style.client}>
+        <div className={style.tag}>
             { data.length>0&&
                 data?.map((item) => (
                     <div>
@@ -144,12 +137,12 @@ const Client = () => {
                                 fontSize="14px"
                                 fontWeight="500"
                             >
-                                {item.title} <DragHandleIcon />
+                                {item.tag} <DragHandleIcon />
                                 </MenuButton>
                             <MenuList>
-                                <MenuItem>Edit</MenuItem>
+                                {/* <MenuItem>Edit</MenuItem> */}
                                 <MenuItem color={"red"} onClick={()=>{
-                                    deletedata(item.id) 
+                                    deletedata(item._id) 
                                     getdata()}}>Delete</MenuItem>
                                 
                             </MenuList>
@@ -163,4 +156,4 @@ const Client = () => {
   )
 }
 
-export default Client
+export default Tag

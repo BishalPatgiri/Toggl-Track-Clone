@@ -6,7 +6,7 @@ const Rangetimer = ({date,setDate}) => {
 
 
   return (
-    <div style={{position:'absolute',top:"65%"}}>
+    <div style={{position:'absolute',top:"20%",right:"10px",border:"1px solid grey",padding:"10px",borderRadius:"8px",backgroundColor:"white"}}>
       <DateRange
         editableDateInputs={true}
         onChange={(item) => setDate([item.selection])}

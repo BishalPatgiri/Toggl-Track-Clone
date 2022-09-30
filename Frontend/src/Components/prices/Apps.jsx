@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Stack, Text, Image } from "@chakra-ui/react";
+import { Box, Button, Text, Image } from "@chakra-ui/react";
 import React from "react";
 import "./Apps.css"
 import { AiFillApple } from "react-icons/ai";

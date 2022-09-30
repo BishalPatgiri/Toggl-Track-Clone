@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { formatAMPM } from './Time'
 import { BsFillTagFill, BsCurrencyDollar, BsFolderFill } from "react-icons/bs";
 import { AiFillDelete, AiFillPlayCircle } from "react-icons/ai";
-import { deletedata } from './api';
+import { deletedata } from '../TimerPage/api';
 
 
  const Scheduler = ({send,getdata,data}) => {
