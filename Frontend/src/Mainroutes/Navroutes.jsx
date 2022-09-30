@@ -50,7 +50,7 @@ const Navroutes = () => {
            </Stack>} />
       </Routes>
       
-   {/* <Footer/>  */}
+  
 
     </div>
   )

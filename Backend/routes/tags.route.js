@@ -2,6 +2,14 @@ const express=require("express")
 const TagModel=require( "../models/tagmodel")
 const tagsRouter=express.Router();
 
+//search
+tagsRouter.get("/",async(req,res)=>{
+    let {tag}=req.query;
+    console.log(tag)
+        let user= await TagModel.find({tagname: new RegExp(tag, 'i')})
+        res.send({user:user})
+    
+    })
 //get
 tagsRouter.get("/:userId",async(req,res)=>{
     const user=req.params.userId
