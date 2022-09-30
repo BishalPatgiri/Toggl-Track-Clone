@@ -13,7 +13,7 @@ import {
   Text,Spacer,HStack
 } from "@chakra-ui/react";
 import Career from "./Career";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link, Link as RouterLink, useNavigate } from "react-router-dom";
 
 //importing Pratik res
 import { Nav,NavLink,Bars,NavMenu,NavBtn,NavBtnLink } from '../NavComponents/responsive Nav/navElements'
@@ -87,7 +87,7 @@ console.log(scrollPosition)
   }
   return (
     <>
-    <Box h="30px" backgroundColor={"pink.400"} px="4%">
+    <Box className={style.navheader} h="30px" backgroundColor={"pink.400"} px="4%">
     <HStack pt="4px" fontSize="14px">
       <Spacer/>
       <Text>Back to Toggl Glogal</Text>
@@ -97,16 +97,15 @@ console.log(scrollPosition)
       <Text>Working at Toggl</Text>
     </HStack>
   </Box>
-    <Nav style={{position:"fixed",top:scrollPosition>=5?"0px": "30px",width:"100%",paddingTop:"0px"}} >
+    <Nav className={style.navbody} style={{position:"fixed",top:scrollPosition>=5&&"0px",width:"100%",paddingTop:"0px"}} >
     
     <div
+     style={{ backgroundColor:nav&&"#FCE5D8", color: "black"}
+        // : { backgroundColor: "rgb(44, 19, 56)" }
+}
       className={style.navbar_main}
       
-      style={
-        nav === true
-          ? { backgroundColor: "#FCE5D8", color: "black"}
-          : { backgroundColor: "rgb(44, 19, 56)" }
-      }
+     
     >
       <div className={style.navbar_main1} style ={{marginRight:"20%"}} >
         <div className={style.navbar_sub2}  >
@@ -128,9 +127,9 @@ console.log(scrollPosition)
           <Bars onClick={onOpen} />
           {/* Drawer */}
 
-          <Drawer placement={placement} onClose={onClose} isOpen={isOpen} >
+          <Drawer  placement={placement} onClose={onClose} isOpen={isOpen} >
             <DrawerOverlay />
-              <DrawerContent backgroundColor={"#FCE5D8"}>
+              <DrawerContent minWidth={"100%"} backgroundColor={"#FCE5D8"}>
                 <DrawerHeader borderBottom='1px solid grey'>
                   <h1
                     style={{
@@ -142,18 +141,21 @@ console.log(scrollPosition)
                   >
                     toggl track
                   </h1>
+                  <DrawerCloseButton mt={"15px"} fontSize= "20px" fontWeight="700" />
                   </DrawerHeader>
                 <DrawerBody padding={"20px"}>
-                  <p style={{padding:"10px 0px 10px 10px"}}>Products <ChevronRightIcon/></p>
+                 <Link to="*"> <p className={style.navabarlinks} >Products <ChevronRightIcon/></p></Link>
                   
-                  <p style={{padding:"10px 0px 10px 10px"}}>Pricing </p>
-                  <p style={{padding:"10px 0px 10px 10px"}}>Why Track? <ChevronRightIcon/></p>
-                  <p style={{padding:"10px 0px 10px 10px"}}>Careers <ChevronRightIcon/></p>
-                  <p style={{padding:"10px 0px 10px 10px"}}>Book a Demo </p>
+                 <Link to="*"> <p  className={style.navabarlinks} >Pricing </p></Link>
+                 <Link to="*"> <p  className={style.navabarlinks} >Why Track? <ChevronRightIcon/></p></Link>
+                 <Link to="*"> <p  className={style.navabarlinks} >Careers <ChevronRightIcon/></p></Link>
+                 <Link to="*"> <p  className={style.navabarlinks} >Book a Demo </p></Link>
 
-                  <div>
-                    <button>Try for free</button>
-                  </div>
+                  {/* <div> */}
+                    <button ClassName={style.navbarbtn} style={{backgroundColor:"#E57CD8",padding:"10px",color:"white",borderRadius:"20px",marginLeft:"42.5%" ,marginTop:"30px",fontWeight:"bold"}} onClick={()=>navigate("*")}>Try for free</button>
+<p style={{padding:"10px",textAlign:"center" ,marginTop:"20px",fontWeight:"bold"}}>Login</p>
+
+                  {/* </div> */}
                 </DrawerBody>
               </DrawerContent>
         </Drawer>

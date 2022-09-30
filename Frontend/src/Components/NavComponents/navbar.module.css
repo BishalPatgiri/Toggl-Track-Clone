@@ -1,3 +1,17 @@
+@media screen and (max-width : 780px) {
+  .navheader{
+    display: none;
+  }
+.navbody{
+position: fixed;
+top:0px;
+
+}
+
+}
+
+
+  
 .navbar_main {
     margin: auto;
     width: 100%;
@@ -6,7 +20,7 @@
     padding-top: 15px;
     position: sticky;
     top: 0;
-    
+    background-color: rgb(44, 19, 56);
   }
   /* .navbarlogo {
     width: 170px;
@@ -90,6 +104,7 @@
     background-color:#fce5d8 ;
   }
   
+  
   .navbar_track {
     /* background-color: rgb(92, 6, 65); */
     margin: auto;
@@ -103,5 +118,16 @@
     height: 60px;
     padding: 5px;
     opacity: 1.4;
+  }
+  .navabarlinks{
+    padding-top:7px;
+    padding-bottom:7px;
+    font-size:17px;
+  }
+  .navbarbtn{
+    font-size: 15px;
+    padding: 10px;
+    color:"white";
+    background:blue;
   }
   

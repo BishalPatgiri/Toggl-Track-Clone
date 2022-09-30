@@ -1,15 +1,17 @@
-import react from "react"
-import './App.css';
-import Login from "./Components/Signing/Login"
-
 
 import './App.css';
+// import Navroutes from "./Mainroutes/Navroutes";
+import { Homepage } from './Components/Homepage/Homepage';
+// import Navbar from './Components/NavComponents/Navbar';
 
+ import Navroutes from './Mainroutes/Navroutes';
+// import { Routes } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-     <Login/>
-    
+     <Navroutes/>
+      {/* <Navbar/> */}
+      {/* <Homepage/> */}
     </div>
   );
 }
