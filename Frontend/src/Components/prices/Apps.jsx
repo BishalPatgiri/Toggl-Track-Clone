@@ -31,7 +31,7 @@ const Apps = () => {
           <Text fontWeight={"bold"}>MOBILE APPS</Text>
           <Text>Start and stop tracking from anywhere</Text>
           <Box style={{display:"flex",gap:"20px"}} marginLeft={"7%"} marginTop={"2%"}>
-          <a  href="https://apps.apple.com/us/app/toggl/id1291898086" target={"_blank"} rel="noreferrer">
+          <a  href="https://apps.apple.com/us/app/toggl/id1291898086" target={"_blank"} rel="noreferrer" >
             <Button margin={"auto"} alignItems={"center"} justifyContent={"center"} marginLeft={"4%"}>
               <Box fontSize={"30px"} >
                 <AiFillApple />
@@ -39,7 +39,7 @@ const Apps = () => {
               <Text>ios</Text>
             </Button>
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.toggl.giskard" target={"_blank"}> <Button>
+            <a href="https://play.google.com/store/apps/details?id=com.toggl.giskard" target={"_blank"} rel="noreferrer"> <Button>
                 <Box fontSize={"30px"} color="#80ed99">
                     <SiAndroid/>
                 </Box>
@@ -60,7 +60,7 @@ const Apps = () => {
                 {" "}
                 <Text>Windows</Text>
             </Button>
-            <a href="https://apps.apple.com/us/app/toggl-track-hours-time-log/id1291898086" target={"_blank"}> <Button>
+            <a href="https://apps.apple.com/us/app/toggl-track-hours-time-log/id1291898086" target={"_blank"} rel="noreferrer"> <Button>
               <Box fontSize={"30px"}>
                 <AiFillApple />
               </Box>
@@ -81,13 +81,13 @@ const Apps = () => {
           <Text fontWeight={"bold"}>BROWSER PLUGINS</Text>
           <Text>100+ integrations with your favorite online tools</Text>
           <Box style={{display:"flex",gap:"20px"}} marginLeft={"7%"} marginTop={"2%"}>
-          <a href="https://chrome.google.com/webstore/detail/toggl-track-productivity/oejgccbfbmkkpaidnkphaiaecficdnfn" target={"_blank"}> <Button>
+          <a href="https://chrome.google.com/webstore/detail/toggl-track-productivity/oejgccbfbmkkpaidnkphaiaecficdnfn" target={"_blank"} rel="noreferrer"> <Button>
               <Box fontSize={"30px"}>
                <Image src="https://public-assets.toggl.com/b/static/332df9a3c112ad4f9957b2955ccd6e8a/a7512/chrome.avif"/>              </Box>
               <Text ml="7px">Chrome</Text>
             </Button></a>
            
-           <a href="https://addons.mozilla.org/en-US/firefox/addon/toggl-button-time-tracker/" target={"_blank"}> <Button>
+           <a href="https://addons.mozilla.org/en-US/firefox/addon/toggl-button-time-tracker/" target={"_blank"} rel="noreferrer"> <Button>
                 <Box fontSize={"30px"} color="#80ed99">
                 <Image src="https://public-assets.toggl.com/b/static/319c6802313fdddaae75bbe61ec3501b/c5779/firefox.avif"/>             
                 </Box>
