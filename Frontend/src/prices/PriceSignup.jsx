@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useToast } from '@chakra-ui/react'
 import {
   Box,
   Button,
@@ -19,30 +20,49 @@ const PriceSignup = () => {
   
   const navigate =useNavigate()
 
+  function ToastExample(x) {
+    const toast = useToast()
+    return (
+      <Button
+        onClick={() =>
+          toast({
+            title: `${x}`,
+            description: "We've created your account for you.",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
+        }
+      >
+        Show Toast
+      </Button>
+    )
+  }
+
   const handleSubmit= async()=>{
 
     const payload = {
-      email,
-      password
-  }
-   await fetch("https://damp-reef-46945.herokuapp.com/auth/register"
-   , {
-      method : "POST",
-      body : JSON.stringify(payload),
-      headers: {
-          'Content-Type': 'application/json'
-        },
-  })
-  if(email.length!=0 && password.length!=0)
-  {
-      alert("register successfully")
-      navigate("/login")
-  }
-  if(email.length==0 && password.length==0)
-  {
-      alert("please sigup")
-      
-  }
+        email,
+        password
+    }
+    await fetch("https://damp-reef-46945.herokuapp.com/auth/register"
+    , {
+        method : "POST",
+        body : JSON.stringify(payload),
+        headers: {
+            'Content-Type': 'application/json'
+          },
+    })
+    // if(email.length!=0 && password.length!=0)
+    // {
+    //   ToastExample("Register Successfully")
+    //     navigate("/login")
+    // }
+    // if(email.length==0 && password.length==0)
+    // {
+    //   ToastExample("Please Sigup Again")
+        
+    // }
   }
 
   return (
