@@ -25,7 +25,6 @@ import {
   import { FaApple, FaGoogle} from 'react-icons/fa';
   // import { useNavigate } from 'react-router-dom';
   import { Link as Linkrouter } from 'react-router-dom';
-import Navbar from '../NavComponents/Navbar';
   // import Footer from '../Homepage/Footer';
   // import Navbar from '../NavComponents/Navbar';
   // import{UseNavigate}from"react-router-dom";
@@ -121,7 +120,7 @@ import Navbar from '../NavComponents/Navbar';
     return (
   
   <>
-  {/* <Box h="30px" backgroundColor={"pink.400"} px="4%">
+  <Box h="30px" backgroundColor={"pink.400"} px="4%">
     <HStack pt="4px" fontSize="14px">
       <Spacer/>
       <Text>Back to Toggl Glogal</Text>
@@ -130,8 +129,8 @@ import Navbar from '../NavComponents/Navbar';
       <Text>Our Mission</Text>
       <Text>Working at Toggl</Text>
     </HStack>
-  </Box> */}
-  <Navbar/>
+  </Box>
+  {/* <Navbar/> */}
   <Box w={"full"} >
     <Box backgroundImage="linear-gradient(rgba(0, 0, 0, 0.5),
                        rgba(0, 0, 0, 0.5)),url('https://public-assets.toggl.com/b/static/a848ad9070fcf959a459fa1e878d2abb/c0583/hero-laptops.jpg')"
