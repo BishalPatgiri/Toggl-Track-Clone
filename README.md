@@ -1,7 +1,7 @@
 
 <h1 align="center">Toggle Track</h1> 
 
-![Toggle track app cover](https://i.postimg.cc/ZYdLD4sY/homepage.png)
+![Screenshot (1413)](https://user-images.githubusercontent.com/103960628/193427517-21406fb5-b47e-430e-a1c9-000ff89e303e.png)
 
 
 <h2 align="center">Web application to show the smooth and clean user flow.</h2>    
@@ -52,21 +52,28 @@
 - All  page are working
 
 # <h2>Home Page : </h2>
-![HomePage](https://i.postimg.cc/Kzwhcxtv/h1.png)
+![Screenshot (1413)](https://user-images.githubusercontent.com/103960628/193427517-21406fb5-b47e-430e-a1c9-000ff89e303e.png)
 # <h2>SignUp Page : </h2>
-![SignUp Page](https://i.postimg.cc/jj21DBxW/signup.png)
+![Screenshot (1414)](https://user-images.githubusercontent.com/103960628/193427595-627574e6-bb92-4a24-8306-3b32abc1c90d.png)
+
 # <h2>Login In / Login Page : </h2>
-![LogIn Page](https://i.postimg.cc/hv1sy04W/errorlogin.png)
+![Screenshot (1409)](https://user-images.githubusercontent.com/103960628/193427404-adaecd6c-6e9c-4040-a761-90cdde2fd3aa.png)
+
 # <h2>Pricing Page : </h2>
 ![Pricing Page](https://i.postimg.cc/Jn5KPWQ4/pppp.png)
+
 # <h2>Timer Page : </h2>
-![Timer Page](https://i.postimg.cc/4xq610vH/timer.png)
+![Screenshot (1410)](https://user-images.githubusercontent.com/103960628/193427648-eb41159d-3a11-4398-8387-260e5f68f499.png)
+
 # <h2>Project Page : </h2>
-![Project Page](https://i.postimg.cc/26Krq4NY/projectd.png)
+![Screenshot (1411)](https://user-images.githubusercontent.com/103960628/193427666-0d34a0c0-7698-48c3-9c79-fe4c2e419383.png)
+
+# Tag Page
+![Screenshot (1412)](https://user-images.githubusercontent.com/103960628/193427680-c3354977-de4b-465a-809e-181d10d8de88.png)
 
 ## Getting Started
 
-This project was built using React v 17.0.2, Redux v 4.1.2, Chakra UI, CSS and Rest API. It is a web application and for running on your local environment you should follow these guidelines.
+This project was built using React v 17.0.2, Chakra UI, CSS and Rest API. It is a web application and for running on your local environment you should follow these guidelines.
 
 
 ### Prerequisites
@@ -158,8 +165,8 @@ This project is the result of Hardwork and Dedication by the Team Members.
 
 
 ## Links :
-# <h3>Deployment Link   : </h3>
-# <h3>Github Link       : </h3>
+# <h3>Deployment Link   :https://toggll-track-clone.netlify.app/</h3>
+# <h3>Github Link       : https://github.com/BishalPatgiri/elastic-punishment-3534/</h3>
 # <h3>Presentation Link :  </h3>
 
 
