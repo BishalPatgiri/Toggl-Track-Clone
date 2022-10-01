@@ -51,10 +51,10 @@ const navigate =useNavigate()
         Choose your billing:
       </Text>
 
-      <Tabs variant='unstyled' width="190px" margin="auto" borderRadius="25px" fontWeight="bold" marginTop="15px">
+      <Tabs variant='unstyled' width="170px" margin="auto" borderRadius="25px" fontWeight="bold" marginTop="15px">
         <TabList style={{backgroundColor:"white", fontWeight:"bold",color:"black", borderRadius:"25px"}}>
-          <Tab onClick={handleAnnual} _selected={{ color: 'white', bg: 'blue.500',borderTopLeftRadius:"25px",fontWeight:"bold",borderBottomLeftRadius:"25px"}}>Annual</Tab>
-          <Tab onClick={handleMonthly} _selected={{ color: 'white', bg: 'blue.500',borderTopRightRadius:"25px",fontWeight:"bold",borderBottomRightRadius:"25px"}}>Monthly</Tab>
+          <Tab onClick={handleAnnual} _selected={{ color: 'white', bg: 'rgb(197, 111, 189)',borderTopLeftRadius:"25px",fontWeight:"bold",borderBottomLeftRadius:"25px"}}>Annual</Tab>
+          <Tab onClick={handleMonthly} _selected={{ color: 'white', bg: 'rgb(197, 111, 189)',borderTopRightRadius:"25px",fontWeight:"bold",borderBottomRightRadius:"25px"}}>Monthly</Tab>
         </TabList>
       </Tabs>
 
@@ -485,9 +485,9 @@ const navigate =useNavigate()
             </Flex>
           </Box>
           <Button
-            fontSize={{ base: "80%", md: "", lg: "16px" }}
+            fontSize={{ base: "100%", md: "", lg: "16px" }}
             borderRadius="30px"
-            w={{ base: "300px", md: "700px", lg: "230px" }}
+            w={{ base: "200px", md: "700px", lg: "230px" }}
             p="25px"
             bg="#E57CD8"
             mt={{ base: "30px", md: "40px", lg: "30px" }}
@@ -605,7 +605,7 @@ const navigate =useNavigate()
           <Button
             fontSize={{ base: "", md: "", lg: "16px" }}
             borderRadius="30px"
-            w={{ base: "300px", md: "700px", lg: "230px" }}
+            w={{ base: "200px", md: "700px", lg: "230px" }}
             p="25px"
             bg="#2c1338"
             mt={{ base: "30px", md: "40px", lg: "230px" }}

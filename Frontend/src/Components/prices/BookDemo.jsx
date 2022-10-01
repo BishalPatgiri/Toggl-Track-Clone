@@ -13,9 +13,14 @@ import {
 } from "@chakra-ui/react";
 import { BsCheckLg } from "react-icons/bs";
 import { Link as RouterLink, useNavigate  } from "react-router-dom";
+import Navbar from "../NavComponents/Navbar";
+import Footer from "../Homepage/Footer"
 const BookDemo = () => {
   const navigate=useNavigate()
   return (
+    <>
+
+   <Navbar/>
     <Box bg="#2c1338" textAlign={"center"}>
       <Stack
         w={"90%"}
@@ -183,6 +188,8 @@ const BookDemo = () => {
         </Flex>
       </Box>
     </Box>
+    <Footer/>
+    </>
   );
 };
 

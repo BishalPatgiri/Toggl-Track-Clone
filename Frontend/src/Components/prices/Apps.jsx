@@ -73,7 +73,7 @@ const Apps = () => {
           <Text fontWeight={"bold"}>WEB APP</Text>
           <Text>To view time reports, manage projects, and teams</Text>
           <Box style={{textAlign:"center"}}>
-          <Button bg="#e57cd8">Sign up for free</Button>
+          <Button bg="#e57cd8" mt="10px">Sign up for free</Button>
           </Box>
         </Box>
         <Box>

@@ -119,7 +119,7 @@ const PriceSignup = () => {
 
         {/* <Box display={{md:"flex"}} m="auto"> */}
           <Button
-            w={{ lg: "200px",base:"290px", md:"710px"}}
+            w={{ lg: "200px",base:"200px", md:"710px"}}
             bg="#e57cd8"
             color="white"
             m={{ lg: "0 0 0 25px",base:"20px 0px 0px 0px" }}

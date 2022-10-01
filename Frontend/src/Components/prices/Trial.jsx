@@ -31,8 +31,9 @@ const Trial = () => {
             borderRadius={"30px"}
             height={{ lg: "50px" }}
             mt={{ base:"20px", lg: "30px" }}
-            ml={{ base:"-20px" }}
+            ml={{ base:"-40px" }}
             mb={{base:"50px"}}
+           
             _hover={{ color: "#E57CD8", bg: "#FCD5E8" }}
           >
             Compare all plan features <IoMdArrowDropright />
@@ -45,8 +46,9 @@ const Trial = () => {
         border={"1px solid white"}
         mt={{base:"100px",md:"70px", lg: "100px" }}
         mb={{ lg: "50px" }}
-        w={{ lg: "70%" }}
+        w={{ lg: "80%" }}
         m="auto"
+        
       >
         <Flex bg={"#FFF3ED"} color="black">
           <Box>
@@ -54,7 +56,7 @@ const Trial = () => {
               fontSize={{ lg: "24px" }}
               m={{ lg: "30px 10px 0px 30px" }}
               textAlign="left"
-              p={{md:"20px",base:"20px"}}
+              p={{md:"20px",base:"20px"}} color={"rgb(44 19 56)"} fontWeight={"600"}
             >
               “Toggl Track increased our profitability by at least 20%. We found
               out where the team was spending too much time on clients. Toggl
@@ -62,7 +64,7 @@ const Trial = () => {
               and fix it.”
             </Text>
             <Text m={{ lg: "30px 10px 10px 30px" }} textAlign="left"  p={{md:"20px",base:"20px"}}>
-              — Sweat+Co on Toggl Track’s Premium plan.Read the case study
+              — Sweat+Co on Toggl Track’s Premium plan. <span style={{color:"rgb(197, 111, 189)",cursor:"pointer"}} >Read the case study</span>
             </Text>
           </Box>
           <Image
@@ -84,7 +86,7 @@ const Trial = () => {
             _hover={{ bg: "#564260" }}
             bg="#E57CD8"
             color={"white"}
-            fontSize={{base:"13px"}}
+            fontSize={{base:"70%"}}
           >
             Try Toggle Track
           </Button>
