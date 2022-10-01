@@ -36,7 +36,7 @@ const Project = () => {
  
   const getdata = () => {
     
-    axios.get("http://localhost:8080/project",{
+    axios.get("https://limitless-peak-78690.herokuapp.com/project",{
      headers:{
        "authorization":`Bearer ${token}`
      }
@@ -53,7 +53,7 @@ const Project = () => {
     }
     
   axios
-    .post("http://localhost:8080/project/create", payload,{
+    .post("https://limitless-peak-78690.herokuapp.com/project/create", payload,{
       headers:{
         "authorization":`Bearer ${token}`
       },
@@ -65,10 +65,10 @@ const Project = () => {
   }
   useEffect(()=>{
     getdata()
-  },[handleSubmit])
+  },[])
   const deletedata=(id)=>{
     axios
-    .delete(`http://localhost:8080/project/delete/${id}`,{
+    .delete(`https://limitless-peak-78690.herokuapp.com/project/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})

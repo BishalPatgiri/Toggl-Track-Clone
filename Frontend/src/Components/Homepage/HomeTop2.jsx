@@ -96,15 +96,15 @@ export const HomeTop2 = () => {
    justifyContent={"space-around"}
    >
    
-    {button.map(e =>(
-        <Tab bg="#ffebbd" color={"black"} _focus={{color:"#ffebbd",bg:"#412a4c"}}>{e}</Tab>
+    {button.map((e,index) =>(
+        <Tab key={index} bg="#ffebbd" color={"black"} _focus={{color:"#ffebbd",bg:"#412a4c"}}>{e}</Tab>
     ))}
   </TabList>
 
 
   <TabPanels>
-    {data.map(e =>(
-        <TabPanel>
+    {data.map((e,index) =>(
+        <TabPanel key={index}>
         
         <Box
         // border="1px solid red"

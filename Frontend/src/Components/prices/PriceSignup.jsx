@@ -3,14 +3,11 @@ import { useToast } from '@chakra-ui/react'
 import {
   Box,
   Button,
-  Divider,
   Flex,
-  Stack,
   Text,
-  Image,
   Input,
 } from "@chakra-ui/react";
-import { BsCheckLg, BsGoogle, BsApple } from "react-icons/bs";
+import { BsGoogle, BsApple } from "react-icons/bs";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +15,6 @@ const PriceSignup = () => {
   const [email,setEmail] = useState('')
   const [password, setPassword] = useState('')
   
-  const navigate =useNavigate()
 
   function ToastExample(x) {
     const toast = useToast()
@@ -45,7 +41,7 @@ const PriceSignup = () => {
         email,
         password
     }
-    await fetch("https://damp-reef-46945.herokuapp.com/auth/register"
+    await fetch("https://limitless-peak-78690.herokuapp.com/auth/register"
     , {
         method : "POST",
         body : JSON.stringify(payload),

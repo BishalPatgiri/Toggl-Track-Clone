@@ -196,12 +196,12 @@ mt="20px"
     cursor={"pointer"} _hover={{color:"pink.400"}} fontWeight="500"
     >— Explore integrations <ChevronRightIcon/></Text>
     </Box>  
-<box>
+<Box>
   <Heading color={"white"} margin={"auto"} textAlign={"center"} marginTop={"5%"}>Join 5 million users tracking their time to get results</Heading>
 <Text color={"#C0B5BA"} fontSize={"19px"} margin={"auto"} textAlign={"center"} marginTop={"2%"}>All plans come with a free, 30-day trial of Toggl Track Premium. Upgrade at the <br/>end of the trial or continue using Track for free.</Text>
 <HStack margin={"auto"} justifyContent={"center"} marginTop={"2%"}><Button color={"white"} bg="#C56FBD" fontSize={"80%"} marginRight={"2%"} borderRadius={"20px"} _hover={{bg:"#564260"}} >Start tracking for free</Button> <Text _hover={{color:"pink.400"}} cursor="pointer" display="flex" justifyContent={"center"}alignItems="center" > <Text _hover={{color:"pink.400"}} color={"white"} fontWeight={"bold"}>Or explore pricing plan </Text><FaAngleRight  color="white"/></Text></HStack>
 
-</box>
+</Box>
 </Box>
   )
 }

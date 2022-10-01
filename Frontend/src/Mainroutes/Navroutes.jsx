@@ -14,11 +14,9 @@ import Signupm from "../Components/Loging/Signupm"
 
 import { Stack } from '@chakra-ui/react'
 import Sidebar from "../Components/sidebar/Sidebar"
-import TopNav from '../Components/TimerPage/TopNav'
 import Project from '../Components/NavComponents/Project/Project'
 import Client from '../Components/NavComponents/Client/Client'
 import Tag from '../Components/NavComponents/Tags/Tag'
-import Timer from '../Components/Homepage/HomeUpperTimer'
 import { Timerd } from '../Components/TimerPage/Timer'
 // import TopNav from '../../Components/TimerPage/TopNav'
 const Navroutes = () => {

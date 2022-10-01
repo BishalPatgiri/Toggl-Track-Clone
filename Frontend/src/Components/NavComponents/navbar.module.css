@@ -15,12 +15,15 @@ top:0px;
 .navbar_main {
     margin: auto;
     width: 100%;
-    height: 80px;
     display: flex;
-    padding-top: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 17px;
+    padding: 15px;
     position: sticky;
     top: 0;
     background-color: rgb(44, 19, 56);
+    border-bottom: 1px solid rgb(100, 47, 114);
   }
   /* .navbarlogo {
     width: 170px;
@@ -32,6 +35,7 @@ top:0px;
     /* margin: auto; */
   
     display: flex;
+    justify-content: space-between;
   }
   .nabvbar_sub1 {
     color: violet;

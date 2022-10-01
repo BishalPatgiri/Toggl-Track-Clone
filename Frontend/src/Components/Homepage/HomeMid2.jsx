@@ -67,8 +67,9 @@ export const HomeMid2 = () => {
    
   
     >
-    {middata.map(e =>(
+    {middata.map((e,index) =>(
         <Box
+        key={index}
         // border="1px solid red"
         w={{base:"80%",sm:"40%",md:"40%",lg:"33%",xl:"33%","2xl":"33%"}}
         display={"flex"}

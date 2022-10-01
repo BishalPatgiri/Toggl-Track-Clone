@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 
 import Googlestop from './GoogleStop';
-import { deletedata, msToTime, postdata } from './api';
+import { postdata } from './api';
 import { formatAMPM } from './Time';
 import {GrAddCircle} from 'react-icons/gr'
 import { AiFillPlayCircle } from "react-icons/ai";
@@ -30,12 +30,14 @@ import SubNav from './SubNav';
 export const Timerd = () => {
   const token=localStorage.getItem("token")
     const [watch, setWatch] = useState(0);
-    const [text, setText] = useState("");
+    const [text, setText] = useState("Draft");
     const[send,setSend]=useState({})
     const [data, setData] = useState([]);
     const id = useRef(null);
-     console.log(data)
-    console.log(text);
+    const [count,setCount]=useState(0)
+    // console.log(data)
+    // console.log(text);
+
     const start = () => {
       if (!id.current) {
         id.current = setInterval(() => {
@@ -45,22 +47,23 @@ export const Timerd = () => {
     };
 
      let getdata = () => {
-       axios.get("https://damp-reef-46945.herokuapp.com/timer",{
+      let user=localStorage.getItem("userId")
+       axios.get(`https://limitless-peak-78690.herokuapp.com/timer/${user}`,{
         headers:{
-          "authorization":token
+          "authorization":`Bearer ${token}`
         }
        }).then((res) => setData(res.data));
       
      };
 
     const stop = async () => {
-      postdata({ id: Date.now(), project: text ,stopat:msToTime(watch)})
+      setCount(count+1)
+      postdata({ id: Date.now(), project: text ,stopat:JSON.stringify(watch)})
       getdata()
       clearInterval(id.current);
       id.current = null;
       setSend()
       setWatch(0)
-      setText("")
     };
     let project=true
     let [timer ,setTimer ]= useState(false)
@@ -90,7 +93,7 @@ export const Timerd = () => {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>NAME</FormLabel>
-              <Input ref={initialRef} placeholder='First name' />
+              <Input value={text} onChange={(e)=>setText(e.target.value)} ref={initialRef} placeholder='First name' />
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>CLIENT</FormLabel>
@@ -168,7 +171,7 @@ export const Timerd = () => {
                size="18px" color="#7e6e85" cursor="pointer" />
               </VStack>   
     </Box>
-    <SubNav />  
+    <SubNav count={count}/>  
     </Box>
   )
 }

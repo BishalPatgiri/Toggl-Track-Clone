@@ -1,15 +1,17 @@
 import axios from 'axios'
 export const postdata = (send) => {
   console.log(send)
+  let user=localStorage.getItem("userId")
+  //console.log(user)
   var token=localStorage.getItem("token")
   console.log(token)
   axios
-    .post("https://damp-reef-46945.herokuapp.com/timer/create", send,{
+    .post(`https://limitless-peak-78690.herokuapp.com/timer/create/${user}`, send,{
       headers:{
-        "authorization":token
+        "authorization":`Bearer ${token}`
       }
     })
-    .then((res) => console.log(" post done"));
+    .then((res) => console.log("Post done"));
 };
 
 
@@ -32,10 +34,10 @@ export function msToTime(duration) {
   console.log(token)
   console.log(id)
   axios
-    .delete(`https://damp-reef-46945.herokuapp.com/timer/delete/${id}`,{
+    .delete(`https://limitless-peak-78690.herokuapp.com/timer/delete/${id}`,{
       headers:{
-        "authorization":token
+        "authorization":`Bearer ${token}`
       }})
-    .then((res) => console.log(" delte done"));
+    .then((res) => console.log("Delete done"));
 };
 // /timer/delete

@@ -96,9 +96,9 @@ export const HomeMid3 = () => {
 
   <TabPanels>
     {data.map((e,index) =>(
-        <TabPanel>
+        <TabPanel  key={index}>
         
-        <Box key={index}
+        <Box
         // border="1px solid red"
         // h={{base:"30vh",sm:"30vh",md:"30vh",lg:"40vh",xl:"60vh","2xl":"50vh"}} 
         // w={{base:"100%",sm:"90%",md:"80%",lg:"90%",xl:"80%","2xl":"80%"}} 

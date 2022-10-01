@@ -46,7 +46,10 @@ import Footer from '../Homepage/Footer';
       }
 
       const handleGoogle=()=>{
-        window.location.assign('https://damp-reef-46945.herokuapp.com/google')
+        alert("show me")
+        window.location.assign('https://limitless-peak-78690.herokuapp.com/auth/google')
+        navigate("/timer")
+      
       }
   
       const handleSubmit = async () => {
@@ -54,7 +57,7 @@ import Footer from '../Homepage/Footer';
               email,
               password
           }
-          await fetch("http://localhost:8080/login", {
+          await fetch("https://limitless-peak-78690.herokuapp.com/login", {
               method : "POST",
               body : JSON.stringify(payload),
               headers: {

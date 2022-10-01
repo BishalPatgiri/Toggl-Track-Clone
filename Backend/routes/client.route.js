@@ -1,5 +1,5 @@
 const express=require("express")
-const ClientModel=require( "../models/ClientModel")
+const ClientModel=require( "../models/clientmodel")
 const clientRouter=express.Router();
 
 //get

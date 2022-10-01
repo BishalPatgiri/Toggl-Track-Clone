@@ -34,7 +34,7 @@ const TopNav = () => {
     };
 
      let getdata = () => {
-       axios.get("https://damp-reef-46945.herokuapp.com/timer",{
+       axios.get("https://limitless-peak-78690.herokuapp.com/timer",{
         headers:{
           "authorization":token
         }

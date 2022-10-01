@@ -29,6 +29,7 @@ import {
   } from '@chakra-ui/react'
   import { Select,Stack,FormControl,FormLabel,Input,Button } from '@chakra-ui/react'
   import { AiFillDelete } from 'react-icons/ai';
+import { getDate } from 'date-fns';
 
 
 const Tag = () => {
@@ -40,7 +41,8 @@ const Tag = () => {
 
   const [tag,settag] = useState("");
 
-  const[data,setData]= useState([])
+  const [data,setData]= useState([])
+  const [search,setSearch]=useState("")
 
   
    
@@ -51,14 +53,18 @@ const Tag = () => {
 // else{
 //   setLogin(true)
 // }
-const getdata = () => {
-    
-  axios.get(`http://localhost:8080/tags/${userId}`,{
+const getdata = (val) => {
+  if(!val){
+  axios.get(`https://limitless-peak-78690.herokuapp.com/tags/${userId}`,{
    headers:{
      "authorization":`Bearer ${token}`
    }
 
   }).then((res) => setData(res.data));
+  }
+  else{
+    setData(val)
+  }
 
 };
 
@@ -66,30 +72,34 @@ const handleSubmit = () => {
   const payload = {
     
     "tagname":tag,
-  "userId":userId
-
+    "userId":userId
   }
   
 axios
-  .post(`http://localhost:8080/tags/create/${userId}`,payload,{
+  .post(`https://limitless-peak-78690.herokuapp.com/tags/create/${userId}`,payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
    
   })
-  .then((res) => console.log(res.data));
-  
-
+  .then((res) => getdata());
 }
   
   useEffect(()=>{
+    if(data.length==0)
     getdata();
-  },[handleSubmit])
+  },[])
+
+  const handleSearch=()=>{
+    axios.get(`https://limitless-peak-78690.herokuapp.com/tags/search?tag=${search}`,{headers:{
+      "authorization":`Bearer ${token}`
+    }}).then(res=>getdata(res.data.user))
+  }
 
   const deletedata=(id)=>{
     console.log(id)
     axios
-    .delete(`http://localhost:8080/tags/${userId}/delete/${id}`,{
+    .delete(`https://limitless-peak-78690.herokuapp.com/tags/${userId}/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       },
@@ -106,7 +116,8 @@ axios
         <div className={style.first}>
             <div>
             tags
-            <input type="text" placeholder='Find tag...' />
+            <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder='Find tag...' />
+            <Button onClick={handleSearch}>Search</Button>
             </div>
             <button className={style.btn} onClick={onOpen} >+ New tag</button>
 
@@ -144,8 +155,8 @@ axios
 
         <div className={style.tag}>
             { data?.length>0&&
-                data?.map((item) => (
-                    <div>
+                data?.map((item,index) => (
+                    <div key={index}>
                         
                         <Menu >
                             <MenuButton
