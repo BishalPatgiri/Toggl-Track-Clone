@@ -1,0 +1,28 @@
+.gridwala{
+    width:90%;
+    margin:auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.gridwala > div{
+    padding:20px 0px 10px 0px;
+}
+
+@media all and (max-width:960px){
+    .gridwala{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media all and (max-width:600px){
+    .gridwala{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media all and (max-width:420px){
+    .gridwala{
+        grid-template-columns: 1fr;
+    }
+}
