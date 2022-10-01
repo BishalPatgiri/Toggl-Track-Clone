@@ -6,19 +6,17 @@ const TimerModel=require("../models/timer.model")
 
 TimerRouter.post("/create/:userId",async(req,res)=>{
 const{id,project,stopat}=req.body
-const user=req.userId
+const user=req.params.userId
 console.log()
 const data=new TimerModel({id,project,stopat,user})
 await data.save()
 res.send(data)
-
-
 })
 
 TimerRouter.get("/:userId",async(req,res)=>{
-    const user=req.userId
-     const data=await TimerModel.find({user:user})
-     res.send(data)
+    const user=req.params.userId
+    const data=await TimerModel.find({user:user})
+    res.send(data)
 })
 
 
