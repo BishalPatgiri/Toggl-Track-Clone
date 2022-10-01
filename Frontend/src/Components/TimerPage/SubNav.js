@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Center, Flex, Text, Container,Button, Box } from "@chakra-ui/react";
 import {
   AiFillSetting,
   AiOutlineDown,
-  AiOutlineRight,
-  AiOutlineLeft,
 } from "react-icons/ai";
 import {
   Menu,
@@ -12,10 +10,12 @@ import {
   MenuList,
   MenuItem
 } from "@chakra-ui/react";
-import { format } from "date-fns";
+import { format, getDate } from "date-fns";
 import Rangetimer from "./Rangetimer";
+import axios from "axios";
+import { msToTime } from "./api";
 
-const SubNav = () => {
+const SubNav = ({count}) => {
   const[open,setOpen]= useState(false)
   const [date, setDate] = useState([
     {
@@ -24,7 +24,36 @@ const SubNav = () => {
       key: "selection",
     },
   ]);
-    let time="00:00:00"
+
+
+    const [time,setTime]=useState("00:00:00")
+    const [project,setProject]=useState([])
+
+    let getdata = () => {
+      let user=localStorage.getItem("userId")
+      let token=localStorage.getItem("token")
+       axios.get(`https://mighty-ocean-92965.herokuapp.com/timer/${user}`,{
+        headers:{
+          "authorization":`Bearer ${token}`
+        }
+       }).then((res) => setProject(res.data));
+      
+     }
+
+    let timeCal=(arr)=>{
+      //console.log(arr)
+      let sum=0
+      arr.map((ele)=>{
+        sum=sum+Number(ele.stopat)
+      })
+      return msToTime(sum)
+    }
+
+     useEffect(()=>{
+      getdata()
+      setTime(timeCal(project))
+     },[count])
+
   return (
     <Flex
       bg="#fcf7f5"
@@ -90,7 +119,15 @@ const SubNav = () => {
           </Menu>
         </Flex>
       </Flex>
-      <Text>(No Project)</Text> 
+      {
+        
+        project.length>0 && project.map((ele)=>(
+          <Text>{ele.project}</Text>
+        ))
+      }
+      {
+        project.length==0 && <Text>(No Project)</Text> 
+      }
       <Box mt="-15px" bgColor="#7e6e85" h="5px" borderRadius="20px"></Box>
     </Flex>
   );

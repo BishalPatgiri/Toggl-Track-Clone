@@ -39,7 +39,7 @@ export default function Signup1() {
           email,
           password
       }
-       await fetch("http://localhost:8080/signup"
+       await fetch("https://mighty-ocean-92965.herokuapp.com/signup"
        , {
           method : "POST",
           body : JSON.stringify(payload),

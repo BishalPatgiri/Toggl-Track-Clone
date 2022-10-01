@@ -6,7 +6,7 @@ const UserModel = require('../models/usermodel');
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8080/auth/google/callback",
+    callbackURL: "https://mighty-ocean-92965.herokuapp.com/auth/google/callback",
     passReqToCallback   : true
   },
   async function(accessToken, refreshToken, profile, cb) {

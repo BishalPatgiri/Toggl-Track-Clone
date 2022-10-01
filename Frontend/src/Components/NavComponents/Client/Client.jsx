@@ -54,7 +54,7 @@ const Client = () => {
 
 const getdata = () => {
     
-  axios.get("http://localhost:8080/client",{
+  axios.get("https://mighty-ocean-92965.herokuapp.com/client",{
    headers:{
      "authorization":`Bearer ${token}`
    }
@@ -72,7 +72,7 @@ const handleSubmit = () => {
   }
   
 axios
-  .post("http://localhost:8080/client/create", payload,{
+  .post("https://mighty-ocean-92965.herokuapp.com/client/create", payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
@@ -90,7 +90,7 @@ axios
   const deletedata=(id)=>{
 
     axios
-    .delete(`http://localhost:8080/client/delete/${id}`,{
+    .delete(`https://mighty-ocean-92965.herokuapp.com/client/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})
@@ -104,7 +104,7 @@ axios
   
     }
     axios
-    .patch(`http://localhost:8080/client/edit/${id}`,payload,{
+    .patch(`https://mighty-ocean-92965.herokuapp.com/client/edit/${id}`,payload,{
       headers:{
         "authorization":`Bearer ${token}`
       }})
