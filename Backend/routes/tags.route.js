@@ -52,10 +52,7 @@ tagsRouter.delete("/:userId/delete/:tagsId",async(req,res)=>{
     const userId=req.params.userId;
     const tagsId=req.params.tagsId;
     const tag= await TagModel.findOne({_id:tagsId})
-    if(tag.userId!==userId)
-    {
-        return res.send("you are not authorized to do it")
-    } 
+ 
     const new_tag= await TagModel.findByIdAndDelete(tagsId)
     return res.send("deleted")
 })

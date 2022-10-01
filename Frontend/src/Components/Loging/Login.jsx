@@ -54,7 +54,7 @@ import Footer from '../Homepage/Footer';
               email,
               password
           }
-          await fetch("https://damp-reef-46945.herokuapp.com/auth/login", {
+          await fetch("http://localhost:8080/login", {
               method : "POST",
               body : JSON.stringify(payload),
               headers: {
@@ -66,7 +66,7 @@ import Footer from '../Homepage/Footer';
           .then((res) => {
             console.log(res)
              
-              if(res.message === "required fields are email,password")
+              if(res.msg === "invalid credential")
            {
             toast({
               title: 'Please fill the details.',
@@ -77,7 +77,7 @@ import Footer from '../Homepage/Footer';
               position:"top"
             })
            }
-           else if (res.message === "Plz enter registered details")
+           else if (res.msg === "please try again later")
           {
             
               toast({
@@ -90,18 +90,8 @@ import Footer from '../Homepage/Footer';
               })
             
           }
-          else if (res.message === "Wrong email or Password")
-          {
-            toast({
-              title: 'Login Failed.',
-              description: "Wrong email or Password.",
-              status: 'error',
-              duration: 3000,
-              isClosable: true,
-              position:"top"
-            })
-          }
-          else if(res.message === "Login Success")
+       
+           if(res.msg === "login successfull")
           {
             toast({
               title: 'Logged in Successfull.',
@@ -112,6 +102,7 @@ import Footer from '../Homepage/Footer';
               position:"top"
             })
             localStorage.setItem("token", res.token)
+            localStorage.setItem("userId", res.userId)
             localStorage.setItem("email",payload.email)
             navigate("/timer")
           }  

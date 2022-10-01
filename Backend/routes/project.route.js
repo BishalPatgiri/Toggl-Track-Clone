@@ -19,13 +19,15 @@ ProjectRouter.get("/", async (req, res) => {
   // const user = req.params.userId;
   // const data = await ProjectModel.find({ user: user });
   const data = await ProjectModel.find();
+  console.log(data)
   res.send(data);
+
 });
 
 //post method
-ProjectRouter.post("/create/:userId", async (req, res) => {
-  const { id, name, client } = req.body;
-  const user = req.params.userId;
+ProjectRouter.post("/create", async (req, res) => {
+  const { id, name, client,user} = req.body;
+  console.log(req.body)
   const data = new ProjectModel({ id, name, client, user });
   await data.save();
   res.send(data);

@@ -33,6 +33,7 @@ import {
 
 const Tag = () => {
   const token=localStorage.getItem("token")
+  var userId=localStorage.getItem("userId")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
@@ -50,18 +51,36 @@ const Tag = () => {
 // else{
 //   setLogin(true)
 // }
-const getdata=()=>{
-  axios.get("http://localhost:8080/tag").then((res) => setData(res.data));
-}
-
-  const handleSubmit = () => {
-    const payload = {"tag":`${tag}`}
-    console.log(payload)
+const getdata = () => {
     
-    axios.post(`http://localhost:8080/tag/create`,payload)
-    .then((res)=>console.log("tag created"))
+  axios.get(`http://localhost:8080/tags/${userId}`,{
+   headers:{
+     "authorization":`Bearer ${token}`
+   }
+
+  }).then((res) => setData(res.data));
+
+};
+
+const handleSubmit = () => {
+  const payload = {
+    
+    "tagname":tag,
+  "userId":userId
 
   }
+  
+axios
+  .post(`http://localhost:8080/tags/create/${userId}`,payload,{
+    headers:{
+      "authorization":`Bearer ${token}`
+    },
+   
+  })
+  .then((res) => console.log(res.data));
+  
+
+}
   
   useEffect(()=>{
     getdata();
@@ -70,8 +89,12 @@ const getdata=()=>{
   const deletedata=(id)=>{
     console.log(id)
     axios
-    .delete(`http://localhost:8080/tag/${id}`)
-    .then((res) => console.log("delete done"));
+    .delete(`http://localhost:8080/tags/${userId}/delete/${id}`,{
+      headers:{
+        "authorization":`Bearer ${token}`
+      },
+    })
+    .then((res) => console.log(res.data));
   }
   
 
@@ -120,7 +143,7 @@ const getdata=()=>{
         </div>
 
         <div className={style.tag}>
-            { data.length>0&&
+            { data?.length>0&&
                 data?.map((item) => (
                     <div>
                         
@@ -137,7 +160,7 @@ const getdata=()=>{
                                 fontSize="14px"
                                 fontWeight="500"
                             >
-                                {item.tag} <DragHandleIcon />
+                                {item.tagname} <DragHandleIcon />
                                 </MenuButton>
                             <MenuList>
                                 {/* <MenuItem>Edit</MenuItem> */}

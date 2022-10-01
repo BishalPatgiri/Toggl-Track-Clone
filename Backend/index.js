@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cors=require("cors")
 const UserModel = require("./models/usermodel");
 const connection = require("./config/db");
 const tagsRouter = require("./routes/tags.route");
@@ -8,6 +9,7 @@ const clientRouter = require("./routes/client.route");
 const { connect } = require("mongoose");
 const app = express();
 app.use(express.json());
+app.use(cors())
 require("dotenv").config();
 const passport = require("./config/googleouth");
 const ProjectRouter = require("./routes/project.route");
@@ -43,7 +45,7 @@ app.post("/signup", async (req, res) => {
 
     const user = new UserModel({ email, password: hash });
     user.save();
-    return res.send("signup successfully");
+    return res.send({msg:"signup successfully"});
   });
 });
 
@@ -53,12 +55,12 @@ app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = await UserModel.findOne({ email });
   if (!user) {
-    return res.send("invalid credential");
+    return res.send({msg:"invalid credential"});
   }
   const hashed_password = user.password;
   await bcrypt.compare(password, hashed_password, function (err, result) {
     if (err) {
-      return res.send("please try again later");
+      return res.send({msg:"please try again later"});
     }
     if (result == true) {
       const token = jwt.sign(
@@ -66,12 +68,12 @@ app.post("/login", async (req, res) => {
         process.env.jwt_secret_key
       );
       return res.send({
-        massage: "login successfull",
+        msg: "login successfull",
         token: token,
         userId: user._id,
       });
     } else {
-      return res.send("invalid credential");
+      return res.send({msg:"invalid credential"});
     }
   });
 });
@@ -81,6 +83,7 @@ const authenticated = (req, res, next) => {
     return res.send("please login again1");
   }
   const user_token = req.headers.authorization.split(" ")[1];
+  console.log(user_token)
   jwt.verify(user_token, process.env.jwt_secret_key, function (err, decoded) {
     if (err) {
       return res.send("please login again");

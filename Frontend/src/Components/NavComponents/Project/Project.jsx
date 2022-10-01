@@ -21,7 +21,7 @@ import { AiFillDelete } from 'react-icons/ai';
 
 const Project = () => {
   var token=localStorage.getItem("token")
-  console.log(token)
+ var userId=localStorage.getItem("userId")
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const initialRef = React.useRef(null)
@@ -33,26 +33,31 @@ const Project = () => {
   //let data = [{name:"Testing",client: "masai",time:"10 Hrs",status:"false",team:"pratik"},{name:"Testing",client: "masai",time:"10 Hrs",status:"false",team:"pratik"}];
  
   const[data,setData]=useState([])
+ 
   const getdata = () => {
-    axios.get("https://damp-reef-46945.herokuapp.com/project",{
+    
+    axios.get("http://localhost:8080/project",{
      headers:{
-       "authorization":token
+       "authorization":`Bearer ${token}`
      }
-    }).then((res) => setData(res.data));
-   
+
+    }).then((res) => setData(res.data.user));
+  
   };
   const handleSubmit = () => {
     const payload = {
       id:Date.now(),
       name:name,
       client:client,
+    user:userId
     }
     
   axios
-    .post("https://damp-reef-46945.herokuapp.com/project/create", payload,{
+    .post("http://localhost:8080/project/create", payload,{
       headers:{
-        "authorization":token
-      }
+        "authorization":`Bearer ${token}`
+      },
+     
     })
     .then((res) => console.log(" data done"));
     
@@ -63,11 +68,11 @@ const Project = () => {
   },[handleSubmit])
   const deletedata=(id)=>{
     axios
-    .delete(`https://damp-reef-46945.herokuapp.com/project/delete/${id}`,{
+    .delete(`http://localhost:8080/project/delete/${id}`,{
       headers:{
-        "authorization":token
+        "authorization":`Bearer ${token}`
       }})
-    .then((res) => console.log("delete done"));
+    .then((res) => console.log(res.data));
   }
   
   
@@ -156,9 +161,11 @@ const Project = () => {
 
         </div>
         <div >
+       
           { data.length>0 &&
-            data?.map((item) => (
-              <div className={style.map}>
+            data.map((item,index) => (
+              
+              <div className={style.map} key ={index}>
                 <div style={{display:"flex",gap:"5px"}} key={item.id} > <FaFirstOrderAlt style={{marginTop:"4px",marginLeft:"-20%"}}  /> {item.name}  </div>
                 <div>{item.client}</div>
                 <div>00h</div>

@@ -39,7 +39,7 @@ export default function Signup1() {
           email,
           password
       }
-       await fetch("https://damp-reef-46945.herokuapp.com/auth/register"
+       await fetch("http://localhost:8080/signup"
        , {
           method : "POST",
           body : JSON.stringify(payload),
@@ -50,18 +50,18 @@ export default function Signup1() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res)
-         if(res.message === "required fields are email,password")
-         {
-          toast({
-            title: 'Please fill the details.',
-            description: "Input Feilds are required .",
-            status: 'error',
-            duration: 1500,
-            isClosable: true,
-            position:"top"
-          })
-         }
-        else if (res.message === "Register Successfull")
+        //  if(res.message === "required fields are email,password")
+        //  {
+        //   toast({
+        //     title: 'Please fill the details.',
+        //     description: "Input Feilds are required .",
+        //     status: 'error',
+        //     duration: 1500,
+        //     isClosable: true,
+        //     position:"top"
+        //   })
+        //  }
+       if (res.msg === "signup successfully")
         {
           toast({
             title: 'Account created.',

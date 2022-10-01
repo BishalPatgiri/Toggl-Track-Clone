@@ -27,7 +27,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import SubNav from './SubNav';
 // import TopNav from '../TimerPage/TopNav';
 
-export const Timer = () => {
+export const Timerd = () => {
   const token=localStorage.getItem("token")
     const [watch, setWatch] = useState(0);
     const [text, setText] = useState("");

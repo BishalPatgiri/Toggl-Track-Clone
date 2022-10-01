@@ -33,6 +33,7 @@ import {
 
 const Client = () => {
   const token=localStorage.getItem("token")
+  var userId=localStorage.getItem("userId")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
@@ -50,31 +51,66 @@ const Client = () => {
 // else{
 //   setLogin(true)
 // }
-const getdata=()=>{
-  axios.get("http://localhost:8080/client").then((res) => setData(res.data));
-}
 
-  const handleSubmit = () => {
-    const payload = {"client":`${client}`}
-    console.log(payload)
+const getdata = () => {
     
-    axios.post(`http://localhost:8080/client/create`,payload)
-    .then((res)=>console.log("client created"))
+  axios.get("http://localhost:8080/client",{
+   headers:{
+     "authorization":`Bearer ${token}`
+   }
+
+  }).then((res) => setData(res.data));
+
+};
+
+const handleSubmit = () => {
+  const payload = {
+    
+    clientname:client,
+  userId:userId
 
   }
+  
+axios
+  .post("http://localhost:8080/client/create", payload,{
+    headers:{
+      "authorization":`Bearer ${token}`
+    },
+   
+  })
+  .then((res) => console.log(res.data));
+  
+
+}
   
   useEffect(()=>{
     getdata();
   },[handleSubmit])
 
   const deletedata=(id)=>{
-    console.log(id)
+
     axios
-    .delete(`http://localhost:8080/client/${id}`)
-    .then((res) => console.log("delete done"));
+    .delete(`http://localhost:8080/client/delete/${id}`,{
+      headers:{
+        "authorization":`Bearer ${token}`
+      }})
+    .then((res) => console.log(res.data));
+  }
+  const editdata=(id)=>{
+    const payload = {
+    
+      clientname:client,
+    userId:userId
+  
+    }
+    axios
+    .patch(`http://localhost:8080/client/edit/${id}`,payload,{
+      headers:{
+        "authorization":`Bearer ${token}`
+      }})
+    .then((res) => console.log(res.data));
   }
   
-
 
 
   return (
@@ -121,8 +157,8 @@ const getdata=()=>{
 
         <div className={style.client}>
             { data.length>0&&
-                data?.map((item) => (
-                    <div>
+                data?.map((item,index) => (
+                    <div key={index}>
                         
                         <Menu >
                             <MenuButton
@@ -137,14 +173,16 @@ const getdata=()=>{
                                 fontSize="14px"
                                 fontWeight="500"
                             >
-                                {item.client} <DragHandleIcon />
+                                {item.clientname} <DragHandleIcon />
                                 </MenuButton>
                             <MenuList>
                                 {/* <MenuItem>Edit</MenuItem> */}
                                 <MenuItem color={"red"} onClick={()=>{
-                                    deletedata(item._id) 
+                                    editdata(item._id) 
+                                    getdata()}}>Edit</MenuItem>
+                                 <MenuItem color={"red"} onClick={()=>{
+                                  deletedata(item._id) 
                                     getdata()}}>Delete</MenuItem>
-                                
                             </MenuList>
                             </Menu>
                     </div>

@@ -67,8 +67,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
   const email=localStorage.getItem("email")
    const navigate=useNavigate()
   const handleLogout=()=>{
-    const token=localStorage.removeItem("token")
-    const email=localStorage.removeItem("email")
+    localStorage.removeItem("token")
+    localStorage.removeItem("email")
+    localStorage.removeItem("userId")
      navigate("/")
 
   }

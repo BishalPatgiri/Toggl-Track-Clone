@@ -18,6 +18,8 @@ import TopNav from '../Components/TimerPage/TopNav'
 import Project from '../Components/NavComponents/Project/Project'
 import Client from '../Components/NavComponents/Client/Client'
 import Tag from '../Components/NavComponents/Tags/Tag'
+import Timer from '../Components/Homepage/HomeUpperTimer'
+import { Timerd } from '../Components/TimerPage/Timer'
 // import TopNav from '../../Components/TimerPage/TopNav'
 const Navroutes = () => {
   return (
@@ -37,7 +39,7 @@ const Navroutes = () => {
            <Route path="/timer" element={
             <Stack direction="row" gap="20px">
             <Sidebar/>
-            <TopNav  />
+            <Timerd  />
            </Stack>}/>
            <Route path="/project" element={
             <Stack direction="row" gap="20px">
