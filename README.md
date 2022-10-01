@@ -28,7 +28,7 @@
 
 [![Mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white "Mongodb")]
 
-<h3 align="center"><a href="https://toggletrack.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://toggll-track-clone.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
 
 <p align="center"> 
     <br />&#10023;
@@ -48,6 +48,8 @@
 - Own Backend Authentication
 - Private Routes
 - Dashboard Page
+- Timer Page
+- Tag Page
 - project
 - All  page are working
 
