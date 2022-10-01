@@ -9,7 +9,6 @@
 <br />
 <p align="center">
     <img src="https://img.shields.io/badge/React_(18.2.0)-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
-    <img src="https://img.shields.io/badge/Redux_(4.2.0)-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="redux" />
     <img src="https://img.shields.io/badge/Chakra%20UI-3bc7bd?style=for-the-badge&logo=chakraui&logoColor=white" alt="chakra-ui"/>
     <img src="https://img.shields.io/badge/Rest_API-02303A?style=for-the-badge&logo=react-router&logoColor=white" alt="restAPI"/>
     <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css3"/>   
@@ -46,9 +45,9 @@
 ## 🚀 Features
 - Homepage
 - Login/Signup User Account
-- Redux Authentication
+- Own Backend Authentication
 - Private Routes
--Timer page
+- Dashboard Page
 - project
 - All  page are working
 
@@ -150,17 +149,17 @@ This project is the result of Hardwork and Dedication by the Team Members.
 
 ## Team Members and Contributors :
 
-### 1]Bishal Patgiri(Team Lead)
-### 2]Kumar Gaurav
-### 3]Altaf Ali Baig
-### 4]Buvaneswaran S
-### 5]Manoj Barki
+### 1] Bishal Patgiri(Team Lead)
+### 2] Kumar Gaurav
+### 3] Altaf Ali Baig
+### 4] Buvaneswaran S
+### 5] Manoj Barki
 
 
 
 ## Links :
-# <h3>Deployment Link   : https://toggletrack.vercel.app/ </h3>
-# <h3>Github Link       : https://github.com/optimizershivam/elastic-punishment-3534 </h3>
+# <h3>Deployment Link   : </h3>
+# <h3>Github Link       : </h3>
 # <h3>Presentation Link :  </h3>
 
 
@@ -171,7 +170,7 @@ If you want to contact me, you can reach me through below handles.
 [![linkedin](	https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/itsurshivam/)
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/optimizershivam/)
 
-© 2022 Shivam Sharma
+© 2022 Bishal Patgiiri
 
 
 
