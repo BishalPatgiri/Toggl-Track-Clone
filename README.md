@@ -165,8 +165,8 @@ This project is the result of Hardwork and Dedication by the Team Members.
 
 
 ## Links :
-# <h3>Deployment Link   : </h3>
-# <h3>Github Link       : </h3>
+# <h3>Deployment Link   :https://toggll-track-clone.netlify.app/</h3>
+# <h3>Github Link       : https://github.com/BishalPatgiri/elastic-punishment-3534/</h3>
 # <h3>Presentation Link :  </h3>
 
 
