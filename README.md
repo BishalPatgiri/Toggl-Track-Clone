@@ -70,7 +70,7 @@
 # <h2>Project Page : </h2>
 ![Screenshot (1411)](https://user-images.githubusercontent.com/103960628/193427666-0d34a0c0-7698-48c3-9c79-fe4c2e419383.png)
 
-# Tag Page
+# <h2>Tag Page :</h2>
 ![Screenshot (1412)](https://user-images.githubusercontent.com/103960628/193427680-c3354977-de4b-465a-809e-181d10d8de88.png)
 
 ## Getting Started
@@ -85,11 +85,11 @@ This project was built using React v 17.0.2, Chakra UI, CSS and Rest API. It is 
 ### Setup
 
 
-The project repository can be found in [GitHub link]https://github.com/optimizershivam/elastic-punishment-3534 or just clone the project using this command. 
+You can download the code as zip file or you can clone it using the following commands 
 
 
 ```
-Using HTTPS
+
 # git clone  
 ```
 
