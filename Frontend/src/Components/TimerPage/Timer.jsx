@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Input, Spacer, Text, useDisclosure, VStack } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Input, Select, Spacer, Text, useDisclosure, VStack } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useRef, useState } from 'react'
 import {
@@ -23,18 +23,21 @@ import { postdata } from './api';
 import { formatAMPM } from './Time';
 import {GrAddCircle} from 'react-icons/gr'
 import { AiFillPlayCircle } from "react-icons/ai";
-// import Scheduler from './Scheduler';
 import SubNav from './SubNav';
-// import TopNav from '../TimerPage/TopNav';
+import { useEffect } from 'react';
 
 export const Timerd = () => {
-  const token=localStorage.getItem("token")
+  const token=localStorage.getItem("userToken")
+
     const [watch, setWatch] = useState(0);
     const [text, setText] = useState("Draft");
+    const [status, setStatus] = useState("Private");
+    const [client, setClient] = useState("No Client");
     const[send,setSend]=useState({})
     const [data, setData] = useState([]);
     const id = useRef(null);
     const [count,setCount]=useState(0)
+    const [clientData,setClientData]=useState([])
     // console.log(data)
     // console.log(text);
 
@@ -47,8 +50,7 @@ export const Timerd = () => {
     };
 
      let getdata = () => {
-      let user=localStorage.getItem("userId")
-       axios.get(`https://limitless-peak-78690.herokuapp.com/timer/${user}`,{
+       axios.get(`https://lit-woodland-02359.herokuapp.com/timer`,{
         headers:{
           "authorization":`Bearer ${token}`
         }
@@ -56,22 +58,40 @@ export const Timerd = () => {
       
      };
 
+     const getClientdata = () => {
+      axios.get("https://lit-woodland-02359.herokuapp.com/client",{
+       headers:{
+         "authorization":`Bearer ${token}`
+       }
+    
+      }).then((res) => setClientData(res.data.data));
+    
+    };
+
     const stop = async () => {
       setCount(count+1)
-      postdata({ id: Date.now(), project: text ,stopat:JSON.stringify(watch)})
+      postdata({project: `${text}` ,stopat:JSON.stringify(watch),client:client,status:status})
       getdata()
       clearInterval(id.current);
       id.current = null;
       setSend()
       setWatch(0)
     };
-    let project=true
+    let [project,setProject]=useState(true)
     let [timer ,setTimer ]= useState(false)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
+
+
+    useEffect(()=>{
+      if(data.length===0){
+        getdata()
+      }
+      getClientdata()
+    },[])
 
   return (
     <Box w={"100%"}>
@@ -97,20 +117,39 @@ export const Timerd = () => {
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>CLIENT</FormLabel>
-              <Input placeholder='No Client' />
+              <Select onChange={(e) => {setClient(e.target.value)}}>
+                <option value=""></option>
+              {
+                clientData.length>0&&clientData.map(ele=>(
+                  <option key={ele._id} value={ele.clientname}>
+                      {ele.clientname}
+                  </option>
+                ))
+              }  
+              </Select>  
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>TEMPLETE</FormLabel>
-              <Input placeholder='No Templete' />
+              <Select>
+                <option value="Template 1">Template 1</option>
+                <option value="Template 2">Template 2</option>
+                <option value="Template 3">Template 3</option>
+              </Select>
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>VISIBILITY</FormLabel>
-              <Input placeholder='Private' />
+              <Select onChange={(e)=>setStatus(e.target.value)}>
+                <option value="Private">Private</option>
+                <option value="Public">Public</option>
+              </Select>
             </FormControl>
           </ModalBody>
-
           <ModalFooter>
-            <Button colorScheme='pink' w={"100%"}>
+            <Button colorScheme='pink' w={"100%"} 
+            onClick={()=>{
+              onClose()
+              setProject(false)
+              }}>
               Create Project
             </Button>
           </ModalFooter>
@@ -119,13 +158,12 @@ export const Timerd = () => {
     </>
 
             {!project ? (
-              <BsFolderFill color="#7e6e85" size="8%" />
+              <BsFolderFill color="#7e6e85" size="20px" />
             ) : (
               <Text onClick={onOpen} _hover={{bg:"#DAE7ED"}} p="5px" borderRadius={"8px"}>+ Create a Project</Text>
             )}
-            <BsFillTagFill color="#7e6e85" h="40px" />
-            <BsCurrencyDollar color="#7e6e85" h="40px" />
-            {/* <TopNav/> */}
+            <BsFillTagFill color="#7e6e85" size="20px" />
+            <BsCurrencyDollar color="#7e6e85" size="20px" />
             {!timer ? (
               <Box display={"flex"} alignItems="center" gap={"20px"}>
                 <Googlestop watch={watch} />

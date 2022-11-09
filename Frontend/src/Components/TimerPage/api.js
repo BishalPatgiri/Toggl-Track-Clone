@@ -1,17 +1,32 @@
 import axios from 'axios'
 export const postdata = (send) => {
+  const {project,client,status}=send
   console.log(send)
-  let user=localStorage.getItem("userId")
+  // let user=localStorage.getItem("userId")
   //console.log(user)
-  var token=localStorage.getItem("token")
-  console.log(token)
+  var token=localStorage.getItem("userToken")
+  //console.log(token)
   axios
-    .post(`https://limitless-peak-78690.herokuapp.com/timer/create/${user}`, send,{
+    .post(`https://lit-woodland-02359.herokuapp.com/timer/create`, send,{
       headers:{
         "authorization":`Bearer ${token}`
       }
     })
-    .then((res) => console.log("Post done"));
+    .then((res) => {
+      console.log("Timer Project Added Successfully")
+      let payload={
+        name:project,
+        client:client,
+        status:status
+      }
+      axios
+      .post("https://lit-woodland-02359.herokuapp.com/project/create", payload,{
+        headers:{
+          "authorization":`Bearer ${token}`
+        },
+      })});
+
+    
 };
 
 
@@ -34,7 +49,7 @@ export function msToTime(duration) {
   console.log(token)
   console.log(id)
   axios
-    .delete(`https://limitless-peak-78690.herokuapp.com/timer/delete/${id}`,{
+    .delete(`https://lit-woodland-02359.herokuapp.com/timer/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})

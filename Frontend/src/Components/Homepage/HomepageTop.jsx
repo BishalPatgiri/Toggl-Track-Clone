@@ -24,11 +24,21 @@ export const HomepageTop = () => {
   }
 
   const handleSubmit = async () => {
+    if(email===""||password===""){
+      return toast({
+        title: 'Please fill all the details correctly.',
+        description: "Input Feilds are required .",
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+        position:"top"
+      })
+    }
       const payload = {
           email,
           password
       }
-       await fetch("https://limitless-peak-78690.herokuapp.com/signup"
+       await fetch("https://lit-woodland-02359.herokuapp.com/user/signup"
        , {
           method : "POST",
           body : JSON.stringify(payload),
@@ -38,30 +48,31 @@ export const HomepageTop = () => {
       })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
-        //  if(res.message === "required fields are email,password")
-        //  {
-        //   toast({
-        //     title: 'Please fill the details.',
-        //     description: "Input Feilds are required .",
-        //     status: 'error',
-        //     duration: 1500,
-        //     isClosable: true,
-        //     position:"top"
-        //   })
-        //  }
-       if (res.msg === "signup successfully")
+        //console.log(res)
+        if(res.message === "Something went wrong! Please try again")
         {
-          toast({
-            title: 'Account created.',
-            description: "We've created your account for you. Please Login",
-            status: 'success',
-            duration: 2500,
-            isClosable: true,
-            position:"top"
-          })
-          setTimeout(()=>{ nav("/login",{replace:true})},1000)
+         toast({
+           title: 'Something went wrong!',
+           description: "Please try again.",
+           status: 'error',
+           duration: 2000,
+           isClosable: true,
+           position:"top"
+         })
         }
+        
+      if (res.message === "Signed Up Succcessful")
+       {
+         toast({
+           title: 'Account created.',
+           description: "We've created an account for you. Please Login",
+           status: 'success',
+           duration: 2000,
+           isClosable: true,
+           position:"top"
+         })
+         setTimeout(()=>{ nav("/login",{replace:true})},800)
+       }
       })
       
      
@@ -81,17 +92,13 @@ export const HomepageTop = () => {
      mt={["10px","30px","70px","76px","50px"]}
      >
   <Container
-//    h={{base:"",sm:"",md:"",lg:"",xl:"80vh","2xl":"80vh"}} 
-mt="50px"
-   maxW={{base:"100%",sm:"100%",md:"100%",lg:"100%",xl:"85%","2xl":"85%"}} 
-  //  border="2px solid black"
+    mt="50px"
+    maxW={{base:"100%",sm:"100%",md:"100%",lg:"100%",xl:"85%","2xl":"85%"}} 
   >
    
 
-     <Box
-    // h={{base:"",sm:"",md:"",lg:"",xl:"20vh","2xl":"20vh"}} 
+    <Box
     maxW={{base:"100%",sm:"100%",md:"100%",lg:"100%",xl:"100%","2xl":"100%"}} 
-    // border="2px solid blue"
     mt="20px"
    >
     <Heading fontSize={{base:"20px",sm:"30px",md:"35px",lg:"40px",xl:"50px","2xl":"50px"}} align="left" color={"white"} >
@@ -112,15 +119,11 @@ mt="50px"
 
    <Flex
      w={{base:"100%",sm:"100%",md:"100%",lg:"100%",xl:"100%","2xl":"100%"}} 
-    //  h={{base:"",sm:"",md:"",lg:"",xl:"70vh","2xl":"70vh"}} 
-    //  border="2px solid red"
      alignItems={"center"}
      flexDirection={{base:"column",sm:"column",md:"column",lg:"column",xl:"row","2xl":"row"}} 
    >
    <Box
      w={{base:"100%",sm:"80%",md:"70%",lg:"60%",xl:"50%","2xl":"50%"}} 
-    //  h={{base:"",sm:"",md:"",lg:"",xl:"70vh","2xl":"70vh"}} 
-      // border="1px solid green"
      >
         <Text 
         color={"white"}
@@ -157,7 +160,6 @@ mt="50px"
      w={{base:"100%",sm:"80%",md:"70%",lg:"60%",xl:"50%","2xl":"50%"}} 
      h={{base:"",sm:"",md:"",lg:"",xl:"70vh","2xl":"70vh"}}
      display={{base:"none",sm:"none",md:"block",lg:"block",xl:"block","2xl":"block"}}
-      // border="1px solid blue"
       
      >
       <Timer/>
@@ -167,7 +169,6 @@ mt="50px"
    <Box
     h={{base:"",sm:"",md:"",lg:"",xl:"20vh","2xl":"20vh"}} 
     maxW={{base:"100%",sm:"100%",md:"100%",lg:"100%",xl:"100%","2xl":"100%"}} 
-    // border="2px solid blue"
     mt="20px"
     display={"flex"}
     flexDirection={"column"}

@@ -30,18 +30,18 @@ const SubNav = ({count}) => {
     const [project,setProject]=useState([])
 
     let getdata = () => {
-      let user=localStorage.getItem("userId")
-      let token=localStorage.getItem("token")
-       axios.get(`https://limitless-peak-78690.herokuapp.com/timer/${user}`,{
+      let token=localStorage.getItem("userToken")
+       axios.get(`https://lit-woodland-02359.herokuapp.com/timer`,{
         headers:{
           "authorization":`Bearer ${token}`
         }
-       }).then((res) => setProject(res.data));
+       }).then((res) => {
+        setProject(res.data.data)
+      });
       
      }
 
     let timeCal=(arr)=>{
-      //console.log(arr)
       let sum=0
       arr.map((ele)=>{
         sum=sum+Number(ele.stopat)
@@ -119,10 +119,21 @@ const SubNav = ({count}) => {
           </Menu>
         </Flex>
       </Flex>
+      <Box display="flex" justifyContent={"space-between"}>
+          <Text>Project Name</Text>
+          <Text>Cient Name</Text>
+          <Text>Visibility</Text>
+          <Text>Time duration</Text>
+          </Box>
       {
         
         project.length>0 && project.map((ele)=>(
+          <Box key={ele._id} display="flex" justifyContent={"space-between"}>
           <Text>{ele.project}</Text>
+          <Text>{ele.client}</Text>
+          <Text>{ele.status}</Text>
+          <Text>{msToTime(ele.stopat)}</Text>
+          </Box>
         ))
       }
       {

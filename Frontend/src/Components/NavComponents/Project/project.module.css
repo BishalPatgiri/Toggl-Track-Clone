@@ -73,7 +73,7 @@
 }
 .title{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 40px;
     border-bottom: 1px solid grey;
     padding-bottom: 20px;
@@ -88,13 +88,15 @@
     cursor: pointer;
 }
 .map{
-    /* border: 1px solid red; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     display: flex;
     justify-content: space-around;
     margin-top: -20px;
     padding: 20px 0px 20px 0px;
     background-color: #ffff;
+}
+.map>div{
+    width: 25%;
 }
 .map>div:hover{
     cursor: pointer;

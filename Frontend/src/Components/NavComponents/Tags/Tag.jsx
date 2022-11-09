@@ -10,9 +10,6 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-    IconButton,
-    
-
   } from '@chakra-ui/react'
 
   import { DragHandleIcon } from '@chakra-ui/icons'
@@ -22,14 +19,8 @@ import {
     MenuButton,
     MenuList,
     MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
   } from '@chakra-ui/react'
-  import { Select,Stack,FormControl,FormLabel,Input,Button } from '@chakra-ui/react'
-  import { AiFillDelete } from 'react-icons/ai';
-import { getDate } from 'date-fns';
+  import { FormControl,Input,Button } from '@chakra-ui/react'
 
 
 const Tag = () => {
@@ -44,39 +35,24 @@ const Tag = () => {
   const [data,setData]= useState([])
   const [search,setSearch]=useState("")
 
-  
-   
-// if("please login again"==="please login again")
-// {
-//       return
-// }
-// else{
-//   setLogin(true)
-// }
-const getdata = (val) => {
-  if(!val){
-  axios.get(`https://limitless-peak-78690.herokuapp.com/tags/${userId}`,{
+const getdata = () => {
+  axios.get(`https://lit-woodland-02359.herokuapp.com/tags`,{
    headers:{
      "authorization":`Bearer ${token}`
    }
 
-  }).then((res) => setData(res.data));
-  }
-  else{
-    setData(val)
+  }).then((res) => setData(res.data.data));
   }
 
-};
+;
 
 const handleSubmit = () => {
   const payload = {
-    
     "tagname":tag,
-    "userId":userId
   }
   
 axios
-  .post(`https://limitless-peak-78690.herokuapp.com/tags/create/${userId}`,payload,{
+  .post(`https://lit-woodland-02359.herokuapp.com/tags/create`,payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
@@ -91,7 +67,7 @@ axios
   },[])
 
   const handleSearch=()=>{
-    axios.get(`https://limitless-peak-78690.herokuapp.com/tags/search?tag=${search}`,{headers:{
+    axios.get(`https://lit-woodland-02359.herokuapp.com/tags/search?tag=${search}`,{headers:{
       "authorization":`Bearer ${token}`
     }}).then(res=>getdata(res.data.user))
   }
@@ -99,7 +75,7 @@ axios
   const deletedata=(id)=>{
     console.log(id)
     axios
-    .delete(`https://limitless-peak-78690.herokuapp.com/tags/${userId}/delete/${id}`,{
+    .delete(`https://lit-woodland-02359.herokuapp.com/tags/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       },
@@ -107,9 +83,6 @@ axios
     .then((res) => console.log(res.data));
   }
   
-
-
-
   return (
     <div className={style.container}>
 

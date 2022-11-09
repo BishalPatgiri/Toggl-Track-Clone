@@ -18,11 +18,10 @@ import Project from '../Components/NavComponents/Project/Project'
 import Client from '../Components/NavComponents/Client/Client'
 import Tag from '../Components/NavComponents/Tags/Tag'
 import { Timerd } from '../Components/TimerPage/Timer'
-// import TopNav from '../../Components/TimerPage/TopNav'
+
 const Navroutes = () => {
   return (
     <div>
-         {/* <Navbar/>  */}
       <Routes>
          <Route path="/" element={<Homepage/>}/>
          <Route path="/BookingConfirm" element={<BookingConfirm/>} />

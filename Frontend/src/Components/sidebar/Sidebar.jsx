@@ -26,26 +26,11 @@ import { FaTag,FaQuestion, FaUserTie } from "react-icons/fa";
 import { BellIcon } from '@chakra-ui/icons'
 import {FaStopwatch  } from "react-icons/fa";
 import{Link as RouterLink,useNavigate} from "react-router-dom";
-// import axios from 'axios';
-// interface LinkItemProps {
-//   name: string;
-//   icon: IconType;
-// }
 
-// const LinkItems = [
-//   { name: 'Timer', icon: FaStopwatch},
-// ];
 const Anylyze=[
     { name:"Reports",icon:TbReportSearch},
     { name:"Insights",icon:MdInsights}
 ]
-// const Manage=[
-//     {name:"Projects",icon:FiFolderMinus,links:"/project"},
-//     {name:"Client",icon:FiUser},
-//     {name:"Team",icon:FaUserFriends},
-//     {name:"Tag",icon:FaTag},
-//     {name:"Help",icon:FaQuestion}
-// ]
 
 export default function SimpleSidebar({ children }) {
 const email=localStorage.getItem("email")
@@ -53,13 +38,7 @@ const email=localStorage.getItem("email")
   return (
     <>
       <SidebarContent display={{ base: 'none', md: 'block' }}/>
-       
-      {/* mobilenav */}
-      {/* <MobileNav display={{ base:"flex",md: 'none' }} />
-      <>
-      </> */}
       </>
-    // </Box>
   );
 }
 
@@ -67,9 +46,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
   const email=localStorage.getItem("email")
    const navigate=useNavigate()
   const handleLogout=()=>{
-    localStorage.removeItem("token")
+    localStorage.removeItem("usertoken")
     localStorage.removeItem("email")
-    localStorage.removeItem("userId")
      navigate("/")
 
   }

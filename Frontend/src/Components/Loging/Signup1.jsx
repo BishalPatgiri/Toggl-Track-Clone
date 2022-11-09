@@ -35,11 +35,21 @@ export default function Signup1() {
   }
 
   const handleSubmit = async () => {
+    if(email===""||password===""){
+      return toast({
+        title: 'Please fill all the details correctly.',
+        description: "Input Feilds are required .",
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+        position:"top"
+      })
+    }
       const payload = {
           email,
           password
       }
-       await fetch("https://limitless-peak-78690.herokuapp.com/signup"
+       await fetch("https://lit-woodland-02359.herokuapp.com/user/signup"
        , {
           method : "POST",
           body : JSON.stringify(payload),
@@ -49,31 +59,33 @@ export default function Signup1() {
       })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
-        //  if(res.message === "required fields are email,password")
-        //  {
-        //   toast({
-        //     title: 'Please fill the details.',
-        //     description: "Input Feilds are required .",
-        //     status: 'error',
-        //     duration: 1500,
-        //     isClosable: true,
-        //     position:"top"
-        //   })
-        //  }
-       if (res.msg === "signup successfully")
-        {
+        // console.log(res)
+         if(res.message === "Something went wrong! Please try again")
+         {
           toast({
-            title: 'Account created.',
-            description: "We've created your account for you. Please Login",
-            status: 'success',
-            duration: 2500,
+            title: 'Something went wrong!',
+            description: "Please try again.",
+            status: 'error',
+            duration: 2000,
             isClosable: true,
             position:"top"
           })
-          setTimeout(()=>{ nav("/login",{replace:true})},1000)
+         }
+         
+       if (res.message === "Signed Up Succcessful")
+        {
+          toast({
+            title: 'Account created.',
+            description: "We've created an account for you. Please Login",
+            status: 'success',
+            duration: 2000,
+            isClosable: true,
+            position:"top"
+          })
+          setTimeout(()=>{ nav("/login",{replace:true})},800)
         }
-      })
+     }
+      )
       
      
   }

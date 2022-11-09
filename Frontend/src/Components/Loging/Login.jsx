@@ -23,13 +23,10 @@ import {
   import { ChevronRightIcon, LockIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   import { useNavigate } from 'react-router-dom';
   import { FaApple, FaGoogle} from 'react-icons/fa';
-  // import { useNavigate } from 'react-router-dom';
   import { Link as Linkrouter } from 'react-router-dom';
-import Navbar from '../NavComponents/Navbar';
-import Footer from '../Homepage/Footer';
-  // import Footer from '../Homepage/Footer';
-  // import Navbar from '../NavComponents/Navbar';
-  // import{UseNavigate}from"react-router-dom";
+  import Navbar from '../NavComponents/Navbar';
+  import Footer from '../Homepage/Footer';
+
   export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
    const navigate=useNavigate()
@@ -53,11 +50,22 @@ import Footer from '../Homepage/Footer';
       }
   
       const handleSubmit = async () => {
-          const payload = {
+        if(email===""||password===""){
+          return toast({
+            title: 'Please fill all the details correctly.',
+            description: "Input Feilds are required .",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+            position:"top"
+          })
+        }
+
+        const payload = {
               email,
               password
           }
-          await fetch("https://limitless-peak-78690.herokuapp.com/login", {
+          await fetch("https://lit-woodland-02359.herokuapp.com/user/signin", {
               method : "POST",
               body : JSON.stringify(payload),
               headers: {
@@ -69,44 +77,45 @@ import Footer from '../Homepage/Footer';
           .then((res) => {
             console.log(res)
              
-              if(res.msg === "invalid credential")
+              if(res.message === "Invalid Credential")
            {
             toast({
-              title: 'Please fill the details.',
-              description: "Input Feilds are required .",
+              title: 'Wrong Credentials!',
+              description: "Please give correct credentials.",
               status: 'error',
-              duration: 1500,
+              duration: 2000,
               isClosable: true,
               position:"top"
             })
            }
-           else if (res.msg === "please try again later")
+
+           else if (res.message === "You don't have an account with us. Please create one!!")
           {
             
               toast({
                 title: 'Login Failed.',
-                description: "Please enter correct Details.",
+                description: "You don't have an account with us. Please create one first.",
                 status: 'error',
-                duration: 3000,
+                duration: 2000,
                 isClosable: true,
                 position:"top"
               })
             
           }
        
-           if(res.msg === "login successfull")
+          if(res.message === "Signin Successfull")
           {
             toast({
               title: 'Logged in Successfull.',
-              description: "Welcome",
+              description: "Welcome to your Dashboard",
               status: 'success',
               duration: 2000,
               isClosable: true,
               position:"top"
             })
-            localStorage.setItem("token", res.token)
-            localStorage.setItem("userId", res.userId)
-            localStorage.setItem("email",payload.email)
+
+            localStorage.setItem("userToken", res.token)
+            localStorage.setItem("email",email)
             navigate("/timer")
           }  
           })
