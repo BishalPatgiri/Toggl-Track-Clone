@@ -1,16 +1,15 @@
 const mongoose=require("mongoose")
-const { Schema } = mongoose;
+
 const timerSchema= new mongoose.Schema({
-    id:{type:Number,required:true},
+    email:{type:String,required:true},
     project:{type:String,required:true},
+    client:String,
+    status:String,
     stopat:{type:String,required:true},
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      }
 })
 
 const TimerModel= mongoose.model("timer",timerSchema)
 
-module.exports=TimerModel
+module.exports={
+  TimerModel
+}

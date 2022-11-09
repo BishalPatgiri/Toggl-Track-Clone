@@ -22,5 +22,8 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-oauth2": "^1.6.1",
     "uuid": "^9.0.0"
+  },
+  "engines": {
+    "node": "18.3.0"
   }
 }

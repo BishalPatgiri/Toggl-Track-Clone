@@ -1,73 +1,49 @@
 const express=require("express")
-const ClientModel=require( "../models/clientmodel")
+const {ClientModel}=require( "../models/clientmodel")
 const clientRouter=express.Router();
 
 //get
 clientRouter.get("/",async(req,res)=>{
-  
-    try{
-    var client= await ClientModel.find()
-    }catch(err){
-        console.log(err)
-    }
-    res.send(client)
+    const {email}=req.body
+    const data= await ClientModel.find({email})
+    //console.log(data)
+    res.send({"data":data})
 })
 
 //search
-clientRouter.get("/",async(req,res)=>{
-    
-let {client}=req.query;
-console.log(client)
-    let user= await ClientModel.find({clientname: new RegExp(client, 'i')})
-    res.send({user:user})
-
+clientRouter.get("/search",async(req,res)=>{
+    const {email}=req.body
+    const {client}=req.query;
+    const user= await ClientModel.find({clientname: new RegExp(client, 'i'),email})
+    res.send({"user":user})
 })
 
 
 //post
 
-clientRouter.post("/create/",async(req,res)=>{
-    
-const {clientname,userId}=req.body;
-const new_Client =new ClientModel({
-   clientname,
-    userId:userId
-})
-await new_Client.save()
-res.send({massage:"client successfully create",new_Client})
+clientRouter.post("/create",async(req,res)=>{   
+const new_client=new ClientModel(req.body)
+await new_client.save()
+res.send({"message":"Client added Successfully"})
 })
 
 //patch
 clientRouter.patch("/edit/:clientId",async(req,res)=>{
-   
-    const clientId=req.params.clientId;
-    const Client= await ClientModel.findOne({_id:clientId})
-  
-    const new_Client= await ClientModel.findByIdAndUpdate(clientId,req.body)
-    return res.send("updated")
+    const {clientId}=req.params;
+    const {email}=req.body
+    await ClientModel.updateOne({_id:clientId,email},{...req.body})
+    return res.send({"message":"Client updated successfully"})
 })
 
 //delete
-// clientRouter.delete("/:userId/delete/:clientId",async(req,res)=>{
-//     const userId=req.params.userId;
-//     const clientId=req.params.clientId;
-
-//     // console.log("client",clientId)
-//     const Client= await ClientModel.findOne({_id:clientId})
-//     if(Client.userId!==userId)
-//     {
-//         return res.send("you are not authorized to do it")
-//     } 
-//     const new_Client= await ClientModel.findByIdAndDelete(clientId)
-//     return res.send("deleted")
-// })
 clientRouter.delete("/delete/:id", async (req, res) => {
-    const id = req.params.id;
-    
-    const data = await ClientModel.findOne({ id: id });
-  
-    const del = await ClientModel.findOneAndDelete({ id: id });
-    res.send({ message: "delted", data: del });
+    const {id} = req.params;
+    const {email}=req.body
+    await ClientModel.deleteOne({ _id: id,email });
+    res.send({ "message": "Client deleted successfully" });
   
   });
-module.exports=clientRouter;
+
+module.exports={
+    clientRouter
+};

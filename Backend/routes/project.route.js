@@ -1,64 +1,51 @@
-const mongoose = require("mongoose");
 const express = require("express");
 const ProjectRouter = express.Router();
-const ProjectModel = require("../models/Projectmodel");
+const { ProjectModel } = require("../models/Projectmodel");
 
-
-//search
-
-
-ProjectRouter.get("/",async(req,res)=>{
-  let {client}=req.query;
-  console.log(client)
-      let user= await ProjectModel.find({clientname: new RegExp(client, 'i')})
-      res.send({user:user})
-  
-  })
 //get function
 ProjectRouter.get("/", async (req, res) => {
-  // const user = req.params.userId;
-  // const data = await ProjectModel.find({ user: user });
-  const data = await ProjectModel.find();
-  console.log(data)
-  res.send(data);
+  const {email} = req.body;
+  const data = await ProjectModel.find({email});
+  res.send({"data":data});
 
 });
 
+//search//
+ProjectRouter.get("/search",async(req,res)=>{
+  let {name}=req.query;
+  let user= await ProjectModel.find({name: new RegExp(name, 'i')})
+  res.send({user:user})
+  })
+
+
 //post method
 ProjectRouter.post("/create", async (req, res) => {
-  const { id, name, client,user} = req.body;
-  console.log(req.body)
-  const data = new ProjectModel({ id, name, client, user });
+  const { email, name, client,status} = req.body;
+  //console.log(req.body)
+  const data = new ProjectModel({ email, name, client ,status});
   await data.save();
-  res.send(data);
+  res.send({"message":"Project added successfully."});
 });
 
 
 //patch method
 ProjectRouter.patch("/edit/:id", async (req, res) => {
-  const id = +req.params.id;
-  console.log("id", id);
-  const user = req.user.id;
-  console.log(mongoose.Types.ObjectId(user));
-  const note = await ProjectModel.findOne({ id: id });
-  console.log(note);
-  // if(note.user === mongoose.Types.ObjectId(user)){
-  const new_project = await ProjectModel.findOneAndUpdate(
-    { id: id },
-    req.body,
-    { new: true }
-  );
-  return res.send({ message: "successfully updated", note: new_project });
+  const {id} = req.params
+  // console.log("id", id);
+  const {email} = req.body;
+  await ProjectModel.updateOne({ _id: id,email },{...req.body});
+  res.send({ message: "Project updated successfully"});
   
 });
 //delete method
 ProjectRouter.delete("/delete/:id", async (req, res) => {
-  const id = req.params.id;
-  
-  const data = await ProjectModel.findOne({ id: id });
-
-  const del = await ProjectModel.findOneAndDelete({ id: id });
-  res.send({ message: "delted", data: del });
+  const {id} = req.params;
+  const {email}=req.body
+  await ProjectModel.deleteOne({ _id: id,email });
+  res.send({ message: "Project Deleted successfully"});
 
 });
-module.exports = ProjectRouter;
+
+module.exports = {
+  ProjectRouter
+};
