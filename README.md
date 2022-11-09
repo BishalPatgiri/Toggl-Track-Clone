@@ -36,11 +36,11 @@
   </p>
   
 
-#  <h1><a href="https://toggll-track-clone.netlify.app/">Toggl Track </a> Website Clone (Learning Purpose)</h1>
+#  <h1><a href="https://clone-toggl-track.netlify.app/">Toggl Track </a> Website Clone (Learning Purpose)</h1>
 
 # <h2>About toggl track Website : </h2>
 
-<a href="https://toggll-track-clone.netlify.app/">Toggl </a>  Track is a time tracking software operated by Toggl OÜ, headquartered in Tallinn, Estonia, that offers online time tracking and reporting services through their website along with mobile and desktop applications. Toggl Track tracks time blocks, optionally labeled with a task, a project, and tags.
+<a href="https://clone-toggl-track.netlify.app/">Toggl </a>  Track is a time tracking software operated by Toggl OÜ, headquartered in Tallinn, Estonia, that offers online time tracking and reporting services through their website along with mobile and desktop applications. Toggl Track tracks time blocks, optionally labeled with a task, a project, and tags.
 
 ## 🚀 Features
 - Homepage
