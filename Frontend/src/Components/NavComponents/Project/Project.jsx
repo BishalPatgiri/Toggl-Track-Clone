@@ -44,7 +44,7 @@ const Project = () => {
   const [clientData,setClientData]=useState([])
  
   const getdata = () => {
-    axios.get("https://lit-woodland-02359.herokuapp.com/project",{
+    axios.get("https://toggl-track-backend.onrender.com/project",{
      headers:{
        "authorization":`Bearer ${token}`
      }
@@ -55,7 +55,7 @@ const Project = () => {
 
 
   const getClientdata = () => {
-    axios.get("https://lit-woodland-02359.herokuapp.com/client",{
+    axios.get("https://toggl-track-backend.onrender.com/client",{
      headers:{
        "authorization":`Bearer ${token}`
      }
@@ -73,7 +73,7 @@ const Project = () => {
     }
     
   axios
-    .post("https://lit-woodland-02359.herokuapp.com/project/create", payload,{
+    .post("https://toggl-track-backend.onrender.com/project/create", payload,{
       headers:{
         "authorization":`Bearer ${token}`
       },
@@ -100,7 +100,7 @@ const Project = () => {
 
   const deletedata=(id)=>{
     axios
-    .delete(`https://lit-woodland-02359.herokuapp.com/project/delete/${id}`,{
+    .delete(`https://toggl-track-backend.onrender.com/project/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})
@@ -119,7 +119,7 @@ const Project = () => {
 
   const handleEdit=(id)=>{
     axios
-    .patch(`https://lit-woodland-02359.herokuapp.com/project/edit/${id}`,{},{
+    .patch(`https://toggl-track-backend.onrender.com/project/edit/${id}`,{},{
       headers:{
         "authorization":`Bearer ${token}`
       }})

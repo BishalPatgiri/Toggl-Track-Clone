@@ -36,7 +36,7 @@ const Tag = () => {
   const [search,setSearch]=useState("")
 
 const getdata = () => {
-  axios.get(`https://lit-woodland-02359.herokuapp.com/tags`,{
+  axios.get(`https://toggl-track-backend.onrender.com/tags`,{
    headers:{
      "authorization":`Bearer ${token}`
    }
@@ -52,7 +52,7 @@ const handleSubmit = () => {
   }
   
 axios
-  .post(`https://lit-woodland-02359.herokuapp.com/tags/create`,payload,{
+  .post(`https://toggl-track-backend.onrender.com/tags/create`,payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
@@ -67,7 +67,7 @@ axios
   },[])
 
   const handleSearch=()=>{
-    axios.get(`https://lit-woodland-02359.herokuapp.com/tags/search?tag=${search}`,{headers:{
+    axios.get(`https://toggl-track-backend.onrender.com/tags/search?tag=${search}`,{headers:{
       "authorization":`Bearer ${token}`
     }}).then(res=>getdata(res.data.user))
   }
@@ -75,7 +75,7 @@ axios
   const deletedata=(id)=>{
     console.log(id)
     axios
-    .delete(`https://lit-woodland-02359.herokuapp.com/tags/delete/${id}`,{
+    .delete(`https://toggl-track-backend.onrender.com/tags/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       },

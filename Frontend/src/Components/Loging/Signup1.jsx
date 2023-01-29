@@ -49,7 +49,7 @@ export default function Signup1() {
           email,
           password
       }
-       await fetch("https://lit-woodland-02359.herokuapp.com/user/signup"
+       await fetch("https://toggl-track-backend.onrender.com/user/signup"
        , {
           method : "POST",
           body : JSON.stringify(payload),

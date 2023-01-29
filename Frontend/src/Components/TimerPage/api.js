@@ -7,7 +7,7 @@ export const postdata = (send) => {
   var token=localStorage.getItem("userToken")
   //console.log(token)
   axios
-    .post(`https://lit-woodland-02359.herokuapp.com/timer/create`, send,{
+    .post(`https://toggl-track-backend.onrender.com/timer/create`, send,{
       headers:{
         "authorization":`Bearer ${token}`
       }
@@ -20,7 +20,7 @@ export const postdata = (send) => {
         status:status
       }
       axios
-      .post("https://lit-woodland-02359.herokuapp.com/project/create", payload,{
+      .post("https://toggl-track-backend.onrender.com/project/create", payload,{
         headers:{
           "authorization":`Bearer ${token}`
         },
@@ -49,7 +49,7 @@ export function msToTime(duration) {
   console.log(token)
   console.log(id)
   axios
-    .delete(`https://lit-woodland-02359.herokuapp.com/timer/delete/${id}`,{
+    .delete(`https://toggl-track-backend.onrender.com/timer/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})

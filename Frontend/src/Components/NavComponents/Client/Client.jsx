@@ -40,7 +40,7 @@ const Client = () => {
   const[data,setData]= useState([])
 
 const getdata = () => {
-  axios.get("https://lit-woodland-02359.herokuapp.com/client",{
+  axios.get("https://toggl-track-backend.onrender.com/client",{
    headers:{
      "authorization":`Bearer ${token}`
    }
@@ -54,7 +54,7 @@ const handleSubmit = () => {
     clientname:client
   }
   
-axios.post("https://lit-woodland-02359.herokuapp.com/client/create", payload,{
+axios.post("https://toggl-track-backend.onrender.com/client/create", payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
@@ -78,7 +78,7 @@ axios.post("https://lit-woodland-02359.herokuapp.com/client/create", payload,{
 
   const deletedata=(id)=>{
 
-    axios.delete(`https://lit-woodland-02359.herokuapp.com/client/delete/${id}`,{
+    axios.delete(`https://toggl-track-backend.onrender.com/client/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})
@@ -103,7 +103,7 @@ axios.post("https://lit-woodland-02359.herokuapp.com/client/create", payload,{
     const payload = {
       clientname:client,
       }
-      axios.patch(`https://lit-woodland-02359.herokuapp.com/client/edit/${id}`,payload,{
+      axios.patch(`https://toggl-track-backend.onrender.com/client/edit/${id}`,payload,{
         headers:{
           "authorization":`Bearer ${token}`
         }})
@@ -121,7 +121,7 @@ axios.post("https://lit-woodland-02359.herokuapp.com/client/create", payload,{
   }
 
   const handleSearch=()=>{
-      axios.get(`https://lit-woodland-02359.herokuapp.com/client/search?client=${searchclient}`,{
+      axios.get(`https://toggl-track-backend.onrender.com/client/search?client=${searchclient}`,{
         headers:{
           "authorization":`Bearer ${token}`
         }})
